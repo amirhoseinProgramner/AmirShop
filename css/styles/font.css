@@ -1,7 +1,5 @@
-/* styles/fonts.css */
 @import url("https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css");
 
-/* اعمال فونت شبنم به تمام المان‌ها */
 * {
   font-family: "Shabnam", "Tahoma", "Arial", sans-serif !important;
 }
@@ -12,7 +10,6 @@ body {
   line-height: 1.6;
 }
 
-/* برای عناوین */
 h1,
 h2,
 h3,
@@ -23,14 +20,13 @@ h6 {
   font-weight: 700;
 }
 
-/* برای دکمه‌ها */
 button,
 .btn {
   font-family: "Shabnam", "Tahoma", "Arial", sans-serif;
   font-weight: 500;
 }
 
-/* برای input ها */
+
 input,
 textarea,
 select {
@@ -38,7 +34,7 @@ select {
   font-weight: 300;
 }
 
-/* برای متن‌های کوچک */
+
 small,
 .text-sm {
   font-family: "Shabnam", "Tahoma", "Arial", sans-serif;
