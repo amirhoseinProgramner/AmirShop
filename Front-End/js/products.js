@@ -1,6 +1,6 @@
 // --- ۱. مدل داده: داده‌های محصولات (بدون تغییر) ---
 
-const productsData = Array.from({ length: 100 }, (_, index) => {
+let productsData = Array.from({ length: 100 }, (_, index) => {
   // ... [همان کد شما برای ساخت محصولات ۱۰۰ تایی] ...
   const categories = ["protein", "creatine", "bcaa", "vitamin", "equipment"];
   const brands = [
@@ -73,6 +73,103 @@ const productsData = Array.from({ length: 100 }, (_, index) => {
       calories: Math.floor(Math.random() * 200) + 100,
     },
   };
+});
+async function loadProductsFromBackend() {
+  try {
+    productsData = await api.getProducts();
+    console.log("محصولات loaded:", productsData);
+  } catch (error) {
+    console.error("خطا در بارگذاری محصولات:", error);
+    productsData = api.getSampleProducts();
+  }
+}
+
+// آپدیت تابع displayProducts
+function displayProducts(productsToShow = productsData) {
+  const productsGrid = document.getElementById("productsGrid");
+  if (!productsGrid) return;
+
+  productsGrid.innerHTML = "";
+
+  productsToShow.forEach((product) => {
+    const productCard = `
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-all duration-300 transform hover:-translate-y-1" data-category="${
+              product.category
+            }">
+                <div class="relative">
+                    <a href="product-single.html?id=${product.id}">
+                        <img 
+                            src="${
+                              product.image ||
+                              "https://images.unsplash.com/photo-1594736797933-d0c1382d7c2e?w=300&h=300&fit=crop"
+                            }" 
+                            alt="${product.name}"
+                            class="w-full h-48 object-cover"
+                        />
+                    </a>
+                    ${
+                      product.stock < 10
+                        ? '<span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">كمياب</span>'
+                        : ""
+                    }
+                    ${
+                      product.stock > 10
+                        ? '<span class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-bold">موجود</span>'
+                        : ""
+                    }
+                    
+                    <button class="absolute bottom-2 left-2 bg-white rounded-full p-2 shadow-md hover:bg-gray-100 transition-colors favorite-btn">
+                        <i data-feather="heart" class="w-4 h-4"></i>
+                    </button>
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs text-gray-500">${
+                          product.brand
+                        }</span>
+                        <div class="flex items-center space-x-1 space-x-reverse">
+                            <i data-feather="star" class="w-3 h-3 text-yellow-400 fill-current"></i>
+                            <span class="text-xs text-gray-600">4.8</span>
+                        </div>
+                    </div>
+                    <a href="product-single.html?id=${product.id}">
+                        <h3 class="font-medium text-sm mb-2 hover:text-primary cursor-pointer line-clamp-2">${
+                          product.name
+                        }</h3>
+                    </a>
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="flex items-center space-x-2 space-x-reverse">
+                            <span class="font-bold text-lg text-primary">${product.price.toLocaleString(
+                              "fa-IR"
+                            )} تومان</span>
+                        </div>
+                        <button class="bg-primary text-white rounded-lg px-3 py-2 hover:bg-primary-dark transition-colors text-sm add-to-cart-btn" data-product-id="${
+                          product.id
+                        }">
+                            <i data-feather="shopping-cart" class="w-4 h-4 inline ml-1"></i>
+                            خرید
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    productsGrid.innerHTML += productCard;
+  });
+
+  feather.replace();
+}
+
+// آپدیت رویداد DOMContentLoaded
+document.addEventListener("DOMContentLoaded", async function () {
+  // بارگذاری محصولات از بک‌اند
+  await loadProductsFromBackend();
+
+  // نمایش محصولات
+  displayProducts();
+  createPagination();
+
+  // بقیه کدها...
+  setupEventListeners();
 });
 
 // --- ۲. توابع کمکی (بدون تغییر) ---
