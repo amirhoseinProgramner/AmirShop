@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>پرداخت موفق - AmirShop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="css/styles/font.css" />
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen flex items-center justify-center px-4 py-8">
+        <div class="max-w-2xl w-full">
+            <div class="bg-white rounded-lg shadow-sm p-8 text-center">
+                <!-- آیکون موفقیت -->
+                <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i data-feather="check" class="w-10 h-10 text-green-600"></i>
+                </div>
+                
+                <h1 class="text-3xl font-bold text-gray-800 mb-4">پرداخت شما با موفقیت انجام شد!</h1>
+                <p class="text-gray-600 mb-8">سفارش شما ثبت شد و به زودی آماده ارسال خواهد شد</p>
+
+                <!-- اطلاعات سفارش -->
+                <div class="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                        <div class="text-left">
+                            <span class="text-gray-600">شماره سفارش:</span>
+                            <span class="font-bold mr-2" id="orderNumber">ORD-1402-789456</span>
+                        </div>
+                        <div class="text-left">
+                            <span class="text-gray-600">مبلغ پرداختی:</span>
+                            <span class="font-bold mr-2" id="orderAmount">3,005,000 تومان</span>
+                        </div>
+                        <div class="text-left">
+                            <span class="text-gray-600">تاریخ پرداخت:</span>
+                            <span class="font-bold mr-2" id="orderDate">۱۴۰۲/۱۰/۲۰ - ۱۵:۳۰</span>
+                        </div>
+                        <div class="text-left">
+                            <span class="text-gray-600">روش پرداخت:</span>
+                            <span class="font-bold mr-2">درگاه بانک سامان</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- محصولات سفارش -->
+                <div class="bg-gray-50 rounded-lg p-6 mb-6">
+                    <h3 class="font-bold text-lg mb-4 text-right">محصولات سفارش</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3 space-x-reverse">
+                                <img src="https://images.unsplash.com/photo-1594736797933-d0c1382d7c2e?w=50&h=50&fit=crop" alt="محصول" class="w-10 h-10 rounded">
+                                <span>پروتئین وی ایزوله</span>
+                            </div>
+                            <span>2,300,000 تومان</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3 space-x-reverse">
+                                <img src="https://images.unsplash.com/photo-1594736797933-d0c1382d7c2e?w=50&h=50&fit=crop" alt="محصول" class="w-10 h-10 rounded">
+                                <span>کراتین مونوهیدرات</span>
+                            </div>
+                            <span>800,000 تومان</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- دکمه‌های action -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="profile/orders.html" class="bg-primary text-white px-8 py-3 rounded-lg hover:bg-primary-dark transition-colors font-medium">
+                        مشاهده سفارش
+                    </a>
+                    <a href="index.html" class="border border-primary text-primary px-8 py-3 rounded-lg hover:bg-primary hover:text-white transition-colors font-medium">
+                        بازگشت به خانه
+                    </a>
+                </div>
+
+                <!-- اطلاعات تماس -->
+                <div class="mt-8 pt-6 border-t border-gray-200">
+                    <p class="text-sm text-gray-600 mb-2">در صورت وجود هرگونه سوال، با پشتیبانی تماس بگیرید</p>
+                    <div class="flex justify-center space-x-6 space-x-reverse text-sm">
+                        <span class="flex items-center space-x-1 space-x-reverse">
+                            <i data-feather="phone" class="w-4 h-4"></i>
+                            <span>۰۲۱-۱۲۳۴۵۶۷۸</span>
+                        </span>
+                        <span class="flex items-center space-x-1 space-x-reverse">
+                            <i data-feather="mail" class="w-4 h-4"></i>
+                            <span>support@amirshop.ir</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        feather.replace();
+
+        // دریافت اطلاعات از URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const orderNumber = urlParams.get('order') || 'ORD-1402-789456';
+        const orderAmount = urlParams.get('amount') || '3005000';
+
+        // نمایش اطلاعات
+        document.getElementById('orderNumber').textContent = orderNumber;
+        document.getElementById('orderAmount').textContent = 
+            parseInt(orderAmount).toLocaleString('fa-IR') + ' تومان';
+        
+        // تاریخ جاری
+        const now = new Date();
+        const persianDate = now.toLocaleDateString('fa-IR');
+        const time = now.toLocaleTimeString('fa-IR', {hour: '2-digit', minute:'2-digit'});
+        document.getElementById('orderDate').textContent = `${persianDate} - ${time}`;
+    </script>
+</body>
+</html>

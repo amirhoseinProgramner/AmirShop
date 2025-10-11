@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>پنل مدیریت</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- در <head> فایل products.html این خط رو اضافه کن -->
+    <link rel="stylesheet" href="css/styles/font.css" />
+  </head>
+  <body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+      <h1 class="text-3xl font-bold mb-8">پنل مدیریت محصولات</h1>
+
+      <!-- فرم محصول -->
+      <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-xl font-bold mb-4" id="formTitle">افزودن محصول جدید</h2>
+        <form id="productForm" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input type="hidden" id="productId" />
+          <!-- این المنت‌ها باید در فرم وجود داشته باشن -->
+          <form id="productForm" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input type="hidden" id="productId" />
+
+            <div class="md:col-span-2">
+              <label class="block text-sm font-medium mb-2">نام محصول *</label>
+              <input
+                type="text"
+                id="productName"
+                class="w-full border rounded-lg px-3 py-2"
+                required
+              />
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium mb-2"
+                >قیمت (تومان) *</label
+              >
+              <input
+                type="number"
+                id="productPrice"
+                class="w-full border rounded-lg px-3 py-2"
+                required
+              />
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium mb-2">دسته‌بندی *</label>
+              <select
+                id="productCategory"
+                class="w-full border rounded-lg px-3 py-2"
+                required
+              >
+                <option value="">انتخاب کنید</option>
+                <option value="پروتئین">پروتئین</option>
+                <option value="گینر">گینر</option>
+                <option value="پری‌ورکات">پری‌ورکات</option>
+                <option value="آمینواسید">آمینواسید</option>
+              </select>
+            </div>
+
+            <!-- همینجا بخش آپلود عکس رو قرار بده -->
+
+            <div class="md:col-span-2">
+              <label class="block text-sm font-medium mb-2">توضیحات</label>
+              <textarea
+                id="productDescription"
+                class="w-full border rounded-lg px-3 py-2"
+                rows="3"
+              ></textarea>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium mb-2">تعداد موجودی</label>
+              <input
+                type="number"
+                id="productStock"
+                class="w-full border rounded-lg px-3 py-2"
+                value="0"
+              />
+            </div>
+
+            <div class="flex items-center">
+              <input type="checkbox" id="hasDiscount" class="ml-2" />
+              <label>تخفیف دارد</label>
+            </div>
+
+            <div id="discountField" class="hidden">
+              <label class="block text-sm font-medium mb-2"
+                >قیمت قبل از تخفیف</label
+              >
+              <input
+                type="number"
+                id="originalPrice"
+                class="w-full border rounded-lg px-3 py-2"
+              />
+            </div>
+
+            <div class="md:col-span-2 flex space-x-4 space-x-reverse">
+              <button
+                type="submit"
+                id="submitBtn"
+                class="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600"
+              >
+                افزودن محصول
+              </button>
+              <button
+                type="button"
+                onclick="productManager.resetForm()"
+                class="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600"
+              >
+                انصراف
+              </button>
+            </div>
+          </form>
+
+          <div class="md:col-span-2">
+            <label class="block text-sm font-medium mb-2">نام محصول *</label>
+            <input
+              type="text"
+              id="productName"
+              class="w-full border rounded-lg px-3 py-2"
+              required
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium mb-2">قیمت (تومان) *</label>
+            <input
+              type="number"
+              id="productPrice"
+              class="w-full border rounded-lg px-3 py-2"
+              required
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium mb-2">دسته‌بندی *</label>
+            <select
+              id="productCategory"
+              class="w-full border rounded-lg px-3 py-2"
+              required
+            >
+              <option value="">انتخاب کنید</option>
+              <option value="پروتئین">پروتئین</option>
+              <option value="گینر">گینر</option>
+              <option value="پری‌ورکات">پری‌ورکات</option>
+              <option value="آمینواسید">آمینواسید</option>
+            </select>
+          </div>
+
+          <!-- در بخش فرم محصول، جایگزین کردن فیلد عکس با این کد -->
+          <div class="md:col-span-2">
+            <label class="block text-sm font-medium mb-2">عکس محصول *</label>
+
+            <!-- آپلود عکس -->
+            <div
+              class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center mb-4"
+            >
+              <input
+                type="file"
+                id="imageUpload"
+                accept="image/*"
+                class="hidden"
+                onchange="handleImageUpload(this.files[0])"
+              />
+
+              <div
+                id="uploadArea"
+                class="cursor-pointer"
+                onclick="document.getElementById('imageUpload').click()"
+              >
+                <svg
+                  class="w-12 h-12 text-gray-400 mx-auto mb-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                  ></path>
+                </svg>
+                <p class="text-gray-600">
+                  برای آپلود عکس کلیک کنید یا فایل را اینجا بکشید
+                </p>
+                <p class="text-sm text-gray-500 mt-1">
+                  فرمت‌های مجاز: JPG, PNG, GIF
+                </p>
+                <!-- اینجا اطلاعات حجم نمایش داده میشه -->
+              </div>
+
+              <!-- اطلاعات فایل -->
+              <div id="fileInfo" class="hidden"></div>
+
+              <!-- Progress Bar -->
+              <div id="uploadProgress" class="hidden mt-4">
+                <div class="bg-gray-200 rounded-full h-2">
+                  <div
+                    id="progressBar"
+                    class="bg-green-500 h-2 rounded-full transition-all duration-300"
+                    style="width: 0%"
+                  ></div>
+                </div>
+                <p id="progressText" class="text-sm text-gray-600 mt-2">
+                  در حال آپلود...
+                </p>
+              </div>
+            </div>
+
+            <!-- پیش‌نمایش عکس -->
+            <div id="imagePreview" class="mt-4"></div>
+
+            <!-- یا آدرس دستی عکس -->
+            <div class="mt-4">
+              <label class="block text-sm font-medium mb-2"
+                >یا آدرس عکس از اینترنت</label
+              >
+              <input
+                type="url"
+                id="productImage"
+                class="w-full border rounded-lg px-3 py-2"
+                placeholder="https://example.com/image.jpg"
+                required
+              />
+            </div>
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-sm font-medium mb-2">توضیحات</label>
+            <textarea
+              id="productDescription"
+              class="w-full border rounded-lg px-3 py-2"
+              rows="3"
+            ></textarea>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium mb-2">تعداد موجودی</label>
+            <input
+              type="number"
+              id="productStock"
+              class="w-full border rounded-lg px-3 py-2"
+              value="0"
+            />
+          </div>
+
+          <div class="flex items-center">
+            <input type="checkbox" id="hasDiscount" class="ml-2" />
+            <label>تخفیف دارد</label>
+          </div>
+
+          <div id="discountField" class="hidden">
+            <label class="block text-sm font-medium mb-2"
+              >قیمت قبل از تخفیف</label
+            >
+            <input
+              type="number"
+              id="originalPrice"
+              class="w-full border rounded-lg px-3 py-2"
+            />
+          </div>
+
+          <div class="md:col-span-2 flex space-x-4 space-x-reverse">
+            <button
+              type="submit"
+              id="submitBtn"
+              class="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600"
+            >
+              افزودن محصول
+            </button>
+            <button
+              type="button"
+              onclick="productManager.resetForm()"
+              class="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600"
+            >
+              انصراف
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- لیست محصولات -->
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-bold">لیست محصولات</h2>
+          <span class="text-gray-600"
+            >تعداد: ${productManager.products.length} محصول</span
+          >
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="p-3 text-right">ID</th>
+                <th class="p-3 text-right">عکس</th>
+                <th class="p-3 text-right">نام محصول</th>
+                <th class="p-3 text-right">قیمت</th>
+                <th class="p-3 text-right">دسته</th>
+                <th class="p-3 text-right">عملیات</th>
+              </tr>
+            </thead>
+            <tbody id="productsTableBody">
+              <!-- محصولات اینجا نمایش داده می‌شوند -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="admin.js"></script>
+    <script>
+      // مدیریت ارسال فرم
+      document
+        .getElementById("productForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const formData = productManager.getFormData();
+          const productId = document.getElementById("productId").value;
+
+          if (productId) {
+            // ویرایش محصول موجود
+            productManager.editProduct(parseInt(productId), formData);
+            alert("محصول با موفقیت ویرایش شد!");
+          } else {
+            // افزودن محصول جدید
+            productManager.addProduct(formData);
+            alert("محصول با موفقیت اضافه شد!");
+          }
+
+          productManager.resetForm();
+        });
+
+      // نمایش/مخفی کردن فیلد تخفیف
+      document
+        .getElementById("hasDiscount")
+        .addEventListener("change", function () {
+          document
+            .getElementById("discountField")
+            .classList.toggle("hidden", !this.checked);
+        });
+
+      // بارگذاری اولیه محصولات
+      document.addEventListener("DOMContentLoaded", function () {
+        productManager.renderProducts();
+      });
+    </script>
+    <!-- در admin.html قبل از بسته شدن </body> -->
+    <script src="upload-handler.js"></script>
+    <script src="admin.js"></script>
+    <script>
+      // مقداردهی اولیه
+      document.addEventListener("DOMContentLoaded", function () {
+        productManager.renderProducts();
+        initializeDragDrop();
+        feather.replace(); // اگر از feather icons استفاده می‌کنی
+      });
+    </script>
+  </body>
+</html>

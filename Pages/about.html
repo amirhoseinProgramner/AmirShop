@@ -1,315 +1,0 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>درباره ما - AmirShop</title>
-
-    <link
-      href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css"
-      rel="stylesheet"
-    />
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <script src="https://unpkg.com/feather-icons"></script>
-
-    <link rel="stylesheet" href="/css/styles/about.css" />
-
-    <!-- تنظیمات Tailwind -->
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: "#FF6B35",
-              secondary: "#004E89",
-              accent: "#2D7D46",
-            },
-            fontFamily: {
-              sans: ["Shabnam", "Tahoma", "Arial", "sans-serif"],
-            },
-          },
-        },
-      };
-    </script>
-  </head>
-  <body class="font-sans bg-gray-50">
-    <!-- هدر (مشابه سایر صفحات) -->
-    <header class="bg-white shadow-sm sticky top-0 z-40">
-      <div class="container mx-auto px-4 py-4">
-        <div class="flex items-center justify-between">
-          <a href="index.html" class="text-2xl font-bold text-primary">
-            AmirShop</a
-          >
-          <nav class="hidden md:flex space-x-8 space-x-reverse">
-            <a href="index.html" class="text-gray-700 hover:text-primary"
-              >خانه</a
-            >
-            <a href="products.html" class="text-gray-700 hover:text-primary"
-              >محصولات</a
-            >
-            <a href="blog.html" class="text-gray-700 hover:text-primary"
-              >مقالات</a
-            >
-            <a
-              href="about.html"
-              class="text-primary font-bold border-b-2 border-primary"
-              >درباره ما</a
-            >
-            <a href="contact.html" class="text-gray-700 hover:text-primary"
-              >تماس با ما</a
-            >
-          </nav>
-        </div>
-      </div>
-    </header>
-
-    <!-- محتوای اصلی درباره ما -->
-    <main>
-      <!-- هیرو -->
-      <section class="about-hero text-white py-20">
-        <div class="container mx-auto px-4 text-center">
-          <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in-up">
-            درباره AmirShop
-          </h1>
-          <p
-            class="text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed animate-fade-in-up animation-delay-100"
-          >
-            از سال ۱۳۹۵، همراه مطمئن ورزشکاران ایرانی در مسیر سلامتی و تناسب
-            اندام
-          </p>
-        </div>
-      </section>
-
-      <!-- آمار و ارقام -->
-      <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <!-- آمار ۱ -->
-            <div class="stat-card p-6 text-center animate-fade-in-up">
-              <div class="stat-icon text-4xl mb-4">🏆</div>
-              <div class="stat-number text-3xl font-bold mb-2">۷+ سال</div>
-              <p class="text-gray-600">تجربه موفق</p>
-            </div>
-
-            <!-- آمار ۲ -->
-            <div
-              class="stat-card p-6 text-center animate-fade-in-up animation-delay-100"
-            >
-              <div class="stat-icon text-4xl mb-4">👥</div>
-              <div class="stat-number text-3xl font-bold mb-2">۵۰,۰۰۰+</div>
-              <p class="text-gray-600">مشتری راضی</p>
-            </div>
-
-            <!-- آمار ۳ -->
-            <div
-              class="stat-card p-6 text-center animate-fade-in-up animation-delay-200"
-            >
-              <div class="stat-icon text-4xl mb-4">📦</div>
-              <div class="stat-number text-3xl font-bold mb-2">۵۰۰+</div>
-              <p class="text-gray-600">محصول متنوع</p>
-            </div>
-
-            <!-- آمار ۴ -->
-            <div
-              class="stat-card p-6 text-center animate-fade-in-up animation-delay-300"
-            >
-              <div class="stat-icon text-4xl mb-4">⭐</div>
-              <div class="stat-number text-3xl font-bold mb-2">۹۸٪</div>
-              <p class="text-gray-600">رضایت مشتری</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ماموریت و چشم‌انداز -->
-      <section class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-          <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div class="animate-fade-in-left">
-              <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
-                ماموریت ما
-              </h2>
-              <p class="text-lg text-gray-600 leading-relaxed mb-6">
-                در AmirShop، ما باور داریم که هر فرد شایسته دستیابی به بهترین
-                نسخه از خودش است. ماموریت ما ارائه باکیفیت‌ترین مکمل‌های ورزشی
-                با تضمین اصالت کالا و قیمت‌های منصفانه است.
-              </p>
-              <div class="space-y-4">
-                <div class="flex items-center">
-                  <span class="bg-primary text-white p-2 rounded-lg ml-4"
-                    >✓</span
-                  >
-                  <span>تضمین اصالت ۱۰۰٪ محصولات</span>
-                </div>
-                <div class="flex items-center">
-                  <span class="bg-primary text-white p-2 rounded-lg ml-4"
-                    >✓</span
-                  >
-                  <span>مشاوره رایگان توسط متخصصین</span>
-                </div>
-                <div class="flex items-center">
-                  <span class="bg-primary text-white p-2 rounded-lg ml-4"
-                    >✓</span
-                  >
-                  <span>پشتیبانی ۲۴ ساعته</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="animate-fade-in-right">
-              <div
-                class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100"
-              >
-                <h3 class="text-2xl font-bold text-gray-800 mb-4">چشم‌انداز</h3>
-                <p class="text-gray-600 leading-relaxed">
-                  می‌خواهیم تبدیل به معتبرترین مرجع مکمل‌های ورزشی در ایران
-                  شویم، جایی که ورزشکاران با اطمینان کامل بتوانند نیازهای خود را
-                  تأمین کنند و در مسیر سلامتی و تناسب اندام همراهی مطمئن داشته
-                  باشند.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- تیم ما -->
-      <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-          <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-              تیم متخصصان ما
-            </h2>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-              جمعی از بهترین متخصصان تغذیه و مربیان ورزشی در کنار شما
-            </p>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <!-- عضو تیم ۱ -->
-            <div class="team-card rounded-2xl p-6 text-center">
-              <div class="relative mb-6 overflow-hidden rounded-xl">
-                <img
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face"
-                  alt="دکتر محمد رضایی"
-                  class="team-image w-32 h-32 rounded-full mx-auto object-cover"
-                />
-              </div>
-              <h3 class="text-xl font-bold text-gray-800 mb-2">
-                دکتر محمد رضایی
-              </h3>
-              <p class="text-primary font-medium mb-3">متخصص تغذیه ورزشی</p>
-              <p class="text-gray-600 text-sm">
-                PhD تغذیه از دانشگاه تهران - ۱۲ سال سابقه مشاوره ورزشی
-              </p>
-            </div>
-
-            <!-- عضو تیم ۲ -->
-            <div class="team-card rounded-2xl p-6 text-center">
-              <div class="relative mb-6 overflow-hidden rounded-xl">
-                <img
-                  src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop&crop=face"
-                  alt="کوچ امیر حسینی"
-                  class="team-image w-32 h-32 rounded-full mx-auto object-cover"
-                />
-              </div>
-              <h3 class="text-xl font-bold text-gray-800 mb-2">
-                کوچ امیر حسینی
-              </h3>
-              <p class="text-primary font-medium mb-3">مربی بدنسازی</p>
-              <p class="text-gray-600 text-sm">
-                مدرک بین‌المللی NASM - قهرمان سابق پرورش اندام
-              </p>
-            </div>
-
-            <!-- عضو تیم ۳ و ۴ رو می‌تونی اضافه کنی -->
-          </div>
-        </div>
-      </section>
-
-      <!-- ارزش‌های ما -->
-      <section class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-          <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-              ارزش‌های ما
-            </h2>
-            <p class="text-xl text-gray-600">
-              اصولی که هر روز به آن‌ها پایبندیم
-            </p>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- ارزش ۱ -->
-            <div class="value-card p-8 text-center">
-              <div class="value-icon text-5xl mb-6">🔒</div>
-              <h3 class="text-xl font-bold text-gray-800 mb-4">اصالت</h3>
-              <p class="text-gray-600 leading-relaxed">
-                هر محصولی که ارائه می‌دهیم، از منابع معتبر تهیه شده و سلامت آن
-                تضمین شده است.
-              </p>
-            </div>
-
-            <!-- ارزش ۲ -->
-            <div class="value-card p-8 text-center">
-              <div class="value-icon text-5xl mb-6">💡</div>
-              <h3 class="text-xl font-bold text-gray-800 mb-4">تخصص</h3>
-              <p class="text-gray-600 leading-relaxed">
-                تیمی از متخصصان همیشه آماده ارائه بهترین راهنمایی‌ها بر اساس علم
-                روز هستند.
-              </p>
-            </div>
-
-            <!-- ارزش ۳ -->
-            <div class="value-card p-8 text-center">
-              <div class="value-icon text-5xl mb-6">❤️</div>
-              <h3 class="text-xl font-bold text-gray-800 mb-4">پشتیبانی</h3>
-              <p class="text-gray-600 leading-relaxed">
-                از اولین تماس تا پس از خرید، در کنار شما هستیم تا بهترین تجربه
-                را داشته باشید.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CTA -->
-      <section class="cta-section text-white py-20">
-        <div class="container mx-auto px-4 text-center">
-          <h2 class="text-3xl md:text-4xl font-bold mb-6">آماده شروع هستید؟</h2>
-          <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-            به خانواده بزرگ AmirShop بپیوندید و تجربه‌ای متفاوت از خرید مکمل‌های
-            ورزشی داشته باشید
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="products.html"
-              class="bg-primary hover:bg-orange-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition shadow-lg"
-            >
-              مشاهده محصولات
-            </a>
-            <a
-              href="contact.html"
-              class="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-xl font-bold text-lg transition"
-            >
-              تماس با ما
-            </a>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- فوتر -->
-    <footer class="bg-gray-800 text-white py-8">
-      <div class="container mx-auto px-4 text-center">
-        <p>© ۱۴۰۲ - کلیه حقوق برای AmirShop محفوظ است</p>
-      </div>
-    </footer>
-
-    <script>
-      feather.replace();
-    </script>
-  </body>
-</html>

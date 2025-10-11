@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>مقالات آموزشی - AmirShop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="css/styles/font.css" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body class="bg-gray-50">
+    <!-- هدر -->
+    <header class="bg-white shadow-sm py-4">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center">
+          <a href="index.html" class="text-2xl font-bold text-primary"
+            >AmirShop</a
+          >
+          <nav class="hidden md:flex space-x-6 space-x-reverse">
+            <a href="index.html" class="hover:text-primary">خانه</a>
+            <a href="products.html" class="hover:text-primary">محصولات</a>
+            <a href="blog.html" class="font-bold border-b-2 border-primary"
+              >مقالات</a
+            >
+            <a href="about.html" class="hover:text-primary">درباره ما</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- محتوای اصلی وبلاگ -->
+    <main class="container mx-auto px-4 py-8">
+      <!-- هدر وبلاگ -->
+      <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+          مقالات آموزشی
+        </h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          جدیدترین مطالب تخصصی در زمینه تغذیه ورزشی، تمرینات و مکمل‌ها
+        </p>
+      </div>
+
+      <div class="flex flex-col lg:flex-row gap-8">
+        <!-- سایدبار -->
+        <aside class="lg:w-1/4">
+          <!-- جستجو -->
+          <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h3 class="font-bold mb-4">جستجو در مقالات</h3>
+            <div class="relative">
+              <input
+                type="text"
+                placeholder="جستجوی مقاله..."
+                class="w-full border rounded-lg px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-primary"
+                id="searchInput"
+              />
+              <i
+                data-feather="search"
+                class="absolute left-3 top-3 text-gray-400 w-4 h-4"
+              ></i>
+            </div>
+          </div>
+
+          <!-- دسته‌بندی‌ها -->
+          <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <h3 class="font-bold mb-4">دسته‌بندی‌ها</h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-primary flex justify-between category-filter"
+                  data-category="nutrition"
+                >
+                  <span>تغذیه ورزشی</span>
+                  <span class="bg-gray-100 px-2 rounded">۱۲</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-primary flex justify-between category-filter"
+                  data-category="workout"
+                >
+                  <span>تمرینات</span>
+                  <span class="bg-gray-100 px-2 rounded">۸</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-primary flex justify-between category-filter"
+                  data-category="supplements"
+                >
+                  <span>مکمل‌ها</span>
+                  <span class="bg-gray-100 px-2 rounded">۱۵</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-primary flex justify-between category-filter"
+                  data-category="health"
+                >
+                  <span>سلامت</span>
+                  <span class="bg-gray-100 px-2 rounded">۶</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- مقالات پربازدید -->
+          <div class="bg-white rounded-lg shadow-sm p-6">
+            <h3 class="font-bold mb-4">پربازدیدترین‌ها</h3>
+            <div class="space-y-4">
+              <a
+                href="article-popular1.html"
+                class="flex items-center space-x-3 space-x-reverse group"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=100&h=60&fit=crop"
+                  alt="مقاله"
+                  class="w-16 h-12 object-cover rounded"
+                />
+                <div>
+                  <h4 class="text-sm font-medium group-hover:text-primary">
+                    بهترین زمان مصرف پروتئین
+                  </h4>
+                  <p class="text-xs text-gray-500">۲٫۱K بازدید</p>
+                </div>
+              </a>
+              <a
+                href="article-popular2.html"
+                class="flex items-center space-x-3 space-x-reverse group"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=100&h=60&fit=crop"
+                  alt="مقاله"
+                  class="w-16 h-12 object-cover rounded"
+                />
+                <div>
+                  <h4 class="text-sm font-medium group-hover:text-primary">
+                    برنامه حجم‌گیری
+                  </h4>
+                  <p class="text-xs text-gray-500">۱٫۸K بازدید</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </aside>
+
+        <!-- لیست مقالات -->
+        <div class="lg:w-3/4">
+          <!-- فیلترها -->
+          <div class="flex flex-wrap gap-4 mb-6" id="filterButtons">
+            <button
+              class="bg-primary text-white px-4 py-2 rounded-lg text-sm filter-btn active"
+              data-category="all"
+            >
+              همه مقالات
+            </button>
+            <button
+              class="bg-white border px-4 py-2 rounded-lg text-sm hover:bg-gray-50 filter-btn"
+              data-category="nutrition"
+            >
+              تغذیه ورزشی
+            </button>
+            <button
+              class="bg-white border px-4 py-2 rounded-lg text-sm hover:bg-gray-50 filter-btn"
+              data-category="workout"
+            >
+              تمرینات
+            </button>
+            <button
+              class="bg-white border px-4 py-2 rounded-lg text-sm hover:bg-gray-50 filter-btn"
+              data-category="supplements"
+            >
+              مکمل‌ها
+            </button>
+            <button
+              class="bg-white border px-4 py-2 rounded-lg text-sm hover:bg-gray-50 filter-btn"
+              data-category="health"
+            >
+              سلامت
+            </button>
+          </div>
+
+          <!-- گرید مقالات -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="articlesGrid">
+            <!-- مقالات به صورت داینامیک لود می‌شوند -->
+          </div>
+
+          <!-- Pagination -->
+          <div class="flex justify-center mt-12 space-x-2">
+            <button
+              class="w-10 h-10 border border-gray-300 rounded-lg flex items-center justify-center hover:border-primary"
+            >
+              <i data-feather="chevron-right" class="w-4 h-4"></i>
+            </button>
+            <button class="w-10 h-10 bg-primary text-white rounded-lg">
+              1
+            </button>
+            <button
+              class="w-10 h-10 border border-gray-300 rounded-lg hover:border-primary"
+            >
+              2
+            </button>
+            <button
+              class="w-10 h-10 border border-gray-300 rounded-lg hover:border-primary"
+            >
+              3
+            </button>
+            <button
+              class="w-10 h-10 border border-gray-300 rounded-lg flex items-center justify-center hover:border-primary"
+            >
+              <i data-feather="chevron-left" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- فوتر -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+      <div class="container mx-auto px-4 text-center">
+        <p>© ۱۴۰۲ - کلیه حقوق برای AmirShop محفوظ است</p>
+      </div>
+    </footer>
+
+    <script src="js/blog.js"></script>
+    <script>
+      feather.replace();
+    </script>
+  </body>
+</html>

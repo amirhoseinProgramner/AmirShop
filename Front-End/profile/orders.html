@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سفارشات من - AmirShop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="../css/styles/font.css" />
+    <link rel="stylesheet" href="../css/styles/profile.css" />
+  </head>
+  <body class="bg-gray-50">
+    <!-- هدر -->
+    <header class="bg-white shadow-sm py-4">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center">
+          <a href="../index.html" class="text-2xl font-bold text-primary"
+            >🏋️‍♂️ AmirShop</a
+          >
+          <nav class="hidden md:flex space-x-6 space-x-reverse">
+            <a href="../index.html" class="hover:text-primary">خانه</a>
+            <a href="../products.html" class="hover:text-primary">محصولات</a>
+            <a href="../blog.html" class="hover:text-primary">مقالات</a>
+            <a href="index.html" class="font-bold border-b-2 border-primary"
+              >حساب کاربری</a
+            >
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+      <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">سفارشات من</h1>
+        <p class="text-gray-600 mb-8">مشاهده و پیگیری سفارشات</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <!-- سایدبار -->
+          <aside class="lg:col-span-1">
+            <div class="bg-white rounded-lg shadow-sm p-6 sticky top-4">
+              <!-- اطلاعات کاربر -->
+              <div class="text-center mb-6 pb-6 border-b">
+                <div
+                  class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <span class="text-white text-2xl font-bold">ا</span>
+                </div>
+                <h3 class="font-bold text-lg">امیرحسین برنامه‌نویس</h3>
+                <p class="text-gray-500 text-sm">amir@example.com</p>
+              </div>
+
+              <!-- منو -->
+              <nav class="space-y-2">
+                <a href="index.html" class="profile-nav-link">
+                  <i data-feather="user" class="w-4 h-4 ml-2"></i>
+                  اطلاعات حساب
+                </a>
+                <a href="orders.html" class="profile-nav-link active">
+                  <i data-feather="shopping-bag" class="w-4 h-4 ml-2"></i>
+                  سفارشات من
+                  <span class="profile-badge">3</span>
+                </a>
+                <a href="addresses.html" class="profile-nav-link">
+                  <i data-feather="map-pin" class="w-4 h-4 ml-2"></i>
+                  آدرس‌ها
+                </a>
+                <a href="settings.html" class="profile-nav-link">
+                  <i data-feather="settings" class="w-4 h-4 ml-2"></i>
+                  تنظیمات
+                </a>
+                <a
+                  href="../index.html"
+                  class="profile-nav-link text-red-600 hover:text-red-700"
+                >
+                  <i data-feather="log-out" class="w-4 h-4 ml-2"></i>
+                  خروج
+                </a>
+              </nav>
+            </div>
+          </aside>
+
+          <!-- محتوای اصلی -->
+          <div class="lg:col-span-3">
+            <!-- فیلترها -->
+            <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+              <div class="flex flex-wrap gap-4">
+                <button class="order-filter-btn active" data-status="all">
+                  همه سفارشات
+                </button>
+                <button class="order-filter-btn" data-status="pending">
+                  در انتظار پرداخت
+                </button>
+                <button class="order-filter-btn" data-status="processing">
+                  در حال پردازش
+                </button>
+                <button class="order-filter-btn" data-status="shipped">
+                  ارسال شده
+                </button>
+                <button class="order-filter-btn" data-status="delivered">
+                  تحویل شده
+                </button>
+                <button class="order-filter-btn" data-status="cancelled">
+                  لغو شده
+                </button>
+              </div>
+            </div>
+
+            <!-- لیست سفارشات -->
+            <div class="space-y-6" id="ordersList">
+              <!-- سفارشات به صورت داینامیک لود می‌شوند -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="../js/orders.js"></script>
+    <script>
+      feather.replace();
+    </script>
+  </body>
+</html>

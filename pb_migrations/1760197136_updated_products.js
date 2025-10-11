@@ -1,0 +1,20 @@
+/// <reference path="../pb_data/types.d.ts" />
+migrate((db) => {
+  const dao = new Dao(db)
+  const collection = dao.findCollectionByNameOrId("qfnkolyknx6u8pd")
+
+  collection.listRule = null
+  collection.viewRule = null
+  collection.createRule = ""
+
+  return dao.saveCollection(collection)
+}, (db) => {
+  const dao = new Dao(db)
+  const collection = dao.findCollectionByNameOrId("qfnkolyknx6u8pd")
+
+  collection.listRule = ""
+  collection.viewRule = ""
+  collection.createRule = null
+
+  return dao.saveCollection(collection)
+})

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نهایی‌سازی خرید - AmirShop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="/css/styles/font.css" />
+  </head>
+  <body class="bg-gray-50">
+    <!-- هدر -->
+    <header class="bg-white shadow-sm py-4">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center">
+          <a href="index.html" class="text-2xl font-bold text-primary"
+            >🏋️‍♂️ AmirShop</a
+          >
+          <div class="text-sm text-gray-600">نهایی‌سازی خرید</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- مراحل خرید -->
+    <div class="container mx-auto px-4 py-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="flex justify-center mb-8">
+          <div class="flex items-center space-x-8 space-x-reverse">
+            <div
+              class="flex items-center space-x-2 space-x-reverse text-primary"
+            >
+              <div
+                class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center"
+              >
+                1
+              </div>
+              <span class="font-medium">سبد خرید</span>
+            </div>
+            <div class="w-16 h-0.5 bg-primary"></div>
+            <div
+              class="flex items-center space-x-2 space-x-reverse text-primary"
+            >
+              <div
+                class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center"
+              >
+                2
+              </div>
+              <span class="font-medium">نهایی‌سازی</span>
+            </div>
+            <div class="w-16 h-0.5 bg-gray-300"></div>
+            <div
+              class="flex items-center space-x-2 space-x-reverse text-gray-400"
+            >
+              <div
+                class="w-8 h-8 bg-gray-300 text-white rounded-full flex items-center justify-center"
+              >
+                3
+              </div>
+              <span class="font-medium">پرداخت</span>
+            </div>
+            <div class="w-16 h-0.5 bg-gray-300"></div>
+            <div
+              class="flex items-center space-x-2 space-x-reverse text-gray-400"
+            >
+              <div
+                class="w-8 h-8 bg-gray-300 text-white rounded-full flex items-center justify-center"
+              >
+                4
+              </div>
+              <span class="font-medium">تأیید</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- اطلاعات کاربر و آدرس -->
+          <div class="lg:col-span-2 space-y-6">
+            <!-- اطلاعات کاربر -->
+            <div class="bg-white rounded-lg shadow-sm p-6">
+              <h3 class="font-bold text-lg mb-4 flex items-center">
+                <i data-feather="user" class="w-5 h-5 ml-2"></i>
+                اطلاعات کاربری
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >نام</label
+                  >
+                  <input
+                    type="text"
+                    value="امیرحسین"
+                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                    readonly
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >نام خانوادگی</label
+                  >
+                  <input
+                    type="text"
+                    value="برنامه‌نویس"
+                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                    readonly
+                  />
+                </div>
+                <div class="md:col-span-2">
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >ایمیل</label
+                  >
+                  <input
+                    type="email"
+                    value="amir@example.com"
+                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                    readonly
+                  />
+                </div>
+                <div class="md:col-span-2">
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >شماره موبایل</label
+                  >
+                  <input
+                    type="tel"
+                    value="09123456789"
+                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                    readonly
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- آدرس ارسال -->
+            <div class="bg-white rounded-lg shadow-sm p-6">
+              <div class="flex justify-between items-center mb-4">
+                <h3 class="font-bold text-lg flex items-center">
+                  <i data-feather="map-pin" class="w-5 h-5 ml-2"></i>
+                  آدرس ارسال
+                </h3>
+                <button class="text-primary text-sm font-medium">
+                  تغییر آدرس
+                </button>
+              </div>
+              <div class="border border-gray-200 rounded-lg p-4">
+                <div class="flex items-start justify-between">
+                  <div>
+                    <p class="font-medium">آدرس منزل</p>
+                    <p class="text-gray-600 text-sm mt-1">
+                      تهران، منطقه 5، خیابان آزادی، کوچه 12، پلاک 25، واحد 3
+                    </p>
+                    <p class="text-gray-500 text-xs mt-2">
+                      کد پستی: 1234567890
+                    </p>
+                  </div>
+                  <div
+                    class="bg-green-100 text-green-600 px-2 py-1 rounded text-xs"
+                  >
+                    پیش‌فرض
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- روش ارسال -->
+            <div class="bg-white rounded-lg shadow-sm p-6">
+              <h3 class="font-bold text-lg mb-4 flex items-center">
+                <i data-feather="truck" class="w-5 h-5 ml-2"></i>
+                روش ارسال
+              </h3>
+              <div class="space-y-3">
+                <label
+                  class="flex items-center space-x-3 space-x-reverse cursor-pointer"
+                >
+                  <input
+                    type="radio"
+                    name="shipping"
+                    checked
+                    class="text-primary"
+                  />
+                  <div class="flex-1">
+                    <p class="font-medium">پیک موتوری</p>
+                    <p class="text-gray-600 text-sm">
+                      تحویل 2-3 ساعته - 25,000 تومان
+                    </p>
+                  </div>
+                </label>
+                <label
+                  class="flex items-center space-x-3 space-x-reverse cursor-pointer"
+                >
+                  <input type="radio" name="shipping" class="text-primary" />
+                  <div class="flex-1">
+                    <p class="font-medium">پست پیشتاز</p>
+                    <p class="text-gray-600 text-sm">
+                      تحویل 2-3 روزه - 15,000 تومان
+                    </p>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- خلاصه سفارش -->
+          <div class="lg:col-span-1">
+            <div class="bg-white rounded-lg shadow-sm p-6 sticky top-4">
+              <h3 class="font-bold text-lg mb-4">خلاصه سفارش</h3>
+
+              <!-- محصولات -->
+              <div class="space-y-4 mb-6">
+                <div class="flex items-center space-x-3 space-x-reverse">
+                  <img
+                    src="https://images.unsplash.com/photo-1594736797933-d0c1382d7c2e?w=60&h=60&fit=crop"
+                    alt="محصول"
+                    class="w-12 h-12 rounded object-cover"
+                  />
+                  <div class="flex-1">
+                    <p class="text-sm font-medium">پروتئین وی ایزوله</p>
+                    <p class="text-xs text-gray-500">1 عدد × 2,300,000 تومان</p>
+                  </div>
+                </div>
+                <div class="flex items-center space-x-3 space-x-reverse">
+                  <img
+                    src="https://images.unsplash.com/photo-1594736797933-d0c1382d7c2e?w=60&h=60&fit=crop"
+                    alt="محصول"
+                    class="w-12 h-12 rounded object-cover"
+                  />
+                  <div class="flex-1">
+                    <p class="text-sm font-medium">کراتین مونوهیدرات</p>
+                    <p class="text-xs text-gray-500">1 عدد × 800,000 تومان</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- هزینه‌ها -->
+              <div class="space-y-2 border-t border-b py-4">
+                <div class="flex justify-between text-sm">
+                  <span>جمع کل:</span>
+                  <span>3,100,000 تومان</span>
+                </div>
+                <div class="flex justify-between text-sm">
+                  <span>هزینه ارسال:</span>
+                  <span>25,000 تومان</span>
+                </div>
+                <div class="flex justify-between text-sm text-green-600">
+                  <span>تخفیف:</span>
+                  <span>-120,000 تومان</span>
+                </div>
+              </div>
+
+              <!-- جمع نهایی -->
+              <div class="flex justify-between items-center mt-4 mb-6">
+                <span class="font-bold text-lg">مبلغ قابل پرداخت:</span>
+                <span class="font-bold text-xl text-primary"
+                  >3,005,000 تومان</span
+                >
+              </div>
+
+              <!-- دکمه ادامه -->
+              <button
+                onclick="window.location.href='payment.html'"
+                class="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary-dark transition-colors font-medium"
+              >
+                ادامه فرآیند خرید
+              </button>
+
+              <!-- امنیت -->
+              <div
+                class="flex items-center justify-center mt-4 space-x-2 space-x-reverse text-xs text-gray-500"
+              >
+                <i data-feather="lock" class="w-4 h-4"></i>
+                <span>اطلاعات شما نزد ما امن است</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      feather.replace();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>پرداخت - AmirShop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="/css/styles/font.css" />
+  </head>
+  <body class="bg-gray-50">
+    <!-- هدر -->
+    <header class="bg-white shadow-sm py-4">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center">
+          <a href="index.html" class="text-2xl font-bold text-primary"
+            >🏋️‍♂️ AmirShop</a
+          >
+          <div class="text-sm text-gray-600">پرداخت</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- مراحل خرید -->
+    <div class="container mx-auto px-4 py-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="flex justify-center mb-8">
+          <div class="flex items-center space-x-8 space-x-reverse">
+            <div
+              class="flex items-center space-x-2 space-x-reverse text-gray-400"
+            >
+              <div
+                class="w-8 h-8 bg-gray-300 text-white rounded-full flex items-center justify-center"
+              >
+                1
+              </div>
+              <span class="font-medium">سبد خرید</span>
+            </div>
+            <div class="w-16 h-0.5 bg-gray-300"></div>
+            <div
+              class="flex items-center space-x-2 space-x-reverse text-gray-400"
+            >
+              <div
+                class="w-8 h-8 bg-gray-300 text-white rounded-full flex items-center justify-center"
+              >
+                2
+              </div>
+              <span class="font-medium">نهایی‌سازی</span>
+            </div>
+            <div class="w-16 h-0.5 bg-primary"></div>
+            <div
+              class="flex items-center space-x-2 space-x-reverse text-primary"
+            >
+              <div
+                class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center"
+              >
+                3
+              </div>
+              <span class="font-medium">پرداخت</span>
+            </div>
+            <div class="w-16 h-0.5 bg-gray-300"></div>
+            <div
+              class="flex items-center space-x-2 space-x-reverse text-gray-400"
+            >
+              <div
+                class="w-8 h-8 bg-gray-300 text-white rounded-full flex items-center justify-center"
+              >
+                4
+              </div>
+              <span class="font-medium">تأیید</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- روش‌های پرداخت -->
+          <div class="lg:col-span-2">
+            <div class="bg-white rounded-lg shadow-sm p-6">
+              <h3 class="font-bold text-lg mb-6">انتخاب روش پرداخت</h3>
+
+              <!-- درگاه بانکی -->
+              <div class="mb-6">
+                <h4 class="font-medium mb-4 text-gray-700">درگاه بانکی</h4>
+                <div class="grid grid-cols-2 gap-4">
+                  <label class="payment-method">
+                    <input
+                      type="radio"
+                      name="payment"
+                      value="saman"
+                      class="hidden"
+                    />
+                    <div
+                      class="border-2 border-gray-200 rounded-lg p-4 text-center cursor-pointer hover:border-primary transition-colors"
+                    >
+                      <img
+                        src="https://logo.clearbit.com/saman-bank.ir"
+                        alt="سامان"
+                        class="h-8 mx-auto mb-2"
+                      />
+                      <span class="text-sm">بانک سامان</span>
+                    </div>
+                  </label>
+                  <label class="payment-method">
+                    <input
+                      type="radio"
+                      name="payment"
+                      value="melli"
+                      class="hidden"
+                    />
+                    <div
+                      class="border-2 border-gray-200 rounded-lg p-4 text-center cursor-pointer hover:border-primary transition-colors"
+                    >
+                      <img
+                        src="https://logo.clearbit.com/melli.ir"
+                        alt="ملی"
+                        class="h-8 mx-auto mb-2"
+                      />
+                      <span class="text-sm">بانک ملی</span>
+                    </div>
+                  </label>
+                  <label class="payment-method">
+                    <input
+                      type="radio"
+                      name="payment"
+                      value="pasargad"
+                      class="hidden"
+                    />
+                    <div
+                      class="border-2 border-gray-200 rounded-lg p-4 text-center cursor-pointer hover:border-primary transition-colors"
+                    >
+                      <img
+                        src="https://logo.clearbit.com/bpi.ir"
+                        alt="پاسارگاد"
+                        class="h-8 mx-auto mb-2"
+                      />
+                      <span class="text-sm">بانک پاسارگاد</span>
+                    </div>
+                  </label>
+                  <label class="payment-method">
+                    <input
+                      type="radio"
+                      name="payment"
+                      value="mellat"
+                      class="hidden"
+                    />
+                    <div
+                      class="border-2 border-gray-200 rounded-lg p-4 text-center cursor-pointer hover:border-primary transition-colors"
+                    >
+                      <img
+                        src="https://logo.clearbit.com/mellat.ir"
+                        alt="ملت"
+                        class="h-8 mx-auto mb-2"
+                      />
+                      <span class="text-sm">بانک ملت</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- کیف پول الکترونیکی -->
+              <div class="mb-6">
+                <h4 class="font-medium mb-4 text-gray-700">
+                  کیف پول الکترونیکی
+                </h4>
+                <div class="space-y-3">
+                  <label
+                    class="flex items-center space-x-3 space-x-reverse cursor-pointer"
+                  >
+                    <input
+                      type="radio"
+                      name="payment"
+                      value="wallet"
+                      class="text-primary"
+                    />
+                    <div class="flex items-center space-x-2 space-x-reverse">
+                      <i
+                        data-feather="credit-card"
+                        class="w-5 h-5 text-blue-500"
+                      ></i>
+                      <span>کیف پول AmirShop</span>
+                    </div>
+                    <span class="text-sm text-gray-500 mr-auto"
+                      >موجودی: 500,000 تومان</span
+                    >
+                  </label>
+                </div>
+              </div>
+
+              <!-- پرداخت آنلاین -->
+              <div>
+                <h4 class="font-medium mb-4 text-gray-700">پرداخت آنلاین</h4>
+                <div class="space-y-3">
+                  <label
+                    class="flex items-center space-x-3 space-x-reverse cursor-pointer"
+                  >
+                    <input
+                      type="radio"
+                      name="payment"
+                      value="zarinpal"
+                      class="text-primary"
+                    />
+                    <img
+                      src="https://logo.clearbit.com/zarinpal.com"
+                      alt="زرین‌پال"
+                      class="h-6"
+                    />
+                    <span>زرین‌پال</span>
+                  </label>
+                  <label
+                    class="flex items-center space-x-3 space-x-reverse cursor-pointer"
+                  >
+                    <input
+                      type="radio"
+                      name="payment"
+                      value="idpay"
+                      class="text-primary"
+                    />
+                    <img
+                      src="https://logo.clearbit.com/idpay.ir"
+                      alt="آیدی پی"
+                      class="h-6"
+                    />
+                    <span>آیدی پی</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- اطلاعات کارت -->
+            <div
+              id="cardInfo"
+              class="bg-white rounded-lg shadow-sm p-6 mt-6 hidden"
+            >
+              <h4 class="font-medium mb-4">اطلاعات کارت بانکی</h4>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >شماره کارت</label
+                  >
+                  <input
+                    type="text"
+                    placeholder="6037 9911 1234 5678"
+                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >تاریخ انقضا</label
+                  >
+                  <input
+                    type="text"
+                    placeholder="MM/YY"
+                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >کد CVV2</label
+                  >
+                  <input
+                    type="text"
+                    placeholder="123"
+                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- خلاصه پرداخت -->
+          <div class="lg:col-span-1">
+            <div class="bg-white rounded-lg shadow-sm p-6 sticky top-4">
+              <h3 class="font-bold text-lg mb-4">خلاصه پرداخت</h3>
+
+              <div class="space-y-3 text-sm">
+                <div class="flex justify-between">
+                  <span>مبلغ کالاها:</span>
+                  <span>3,100,000 تومان</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>هزینه ارسال:</span>
+                  <span>25,000 تومان</span>
+                </div>
+                <div class="flex justify-between text-green-600">
+                  <span>تخفیف:</span>
+                  <span>-120,000 تومان</span>
+                </div>
+                <div
+                  class="border-t pt-3 flex justify-between font-bold text-lg"
+                >
+                  <span>مبلغ نهایی:</span>
+                  <span class="text-primary">3,005,000 تومان</span>
+                </div>
+              </div>
+
+              <button
+                id="payButton"
+                onclick="processPayment()"
+                class="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary-dark transition-colors font-medium mt-6"
+              >
+                پرداخت
+              </button>
+
+              <div class="mt-4 text-xs text-gray-500 text-center">
+                <p>با کلیک بر پرداخت، قوانین و مقررات را پذیرفته‌اید</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      feather.replace();
+
+      // مدیریت انتخاب روش پرداخت
+      document.querySelectorAll('input[name="payment"]').forEach((radio) => {
+        radio.addEventListener("change", function () {
+          const cardInfo = document.getElementById("cardInfo");
+          if (
+            this.value === "saman" ||
+            this.value === "melli" ||
+            this.value === "pasargad" ||
+            this.value === "mellat"
+          ) {
+            cardInfo.classList.remove("hidden");
+          } else {
+            cardInfo.classList.add("hidden");
+          }
+        });
+      });
+
+      // شبیه‌سازی پرداخت
+      function processPayment() {
+        const selectedPayment = document.querySelector(
+          'input[name="payment"]:checked'
+        );
+        if (!selectedPayment) {
+          alert("لطفاً یک روش پرداخت انتخاب کنید");
+          return;
+        }
+
+        // نمایش لودینگ
+        const button = document.getElementById("payButton");
+        button.innerHTML = "در حال انتقال به درگاه پرداخت...";
+        button.disabled = true;
+
+        // شبیه‌سازی انتقال به درگاه
+        setTimeout(() => {
+          window.location.href = "payment-verify.html";
+        }, 2000);
+      }
+    </script>
+
+    <style>
+      .payment-method input:checked + div {
+        border-color: #3b82f6;
+        background-color: #f0f9ff;
+      }
+    </style>
+  </body>
+</html>

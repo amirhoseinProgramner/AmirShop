@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AmirShop - فروشگاه مکمل‌های ورزشی</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#FF6B35",
+              secondary: "#004E89",
+              accent: "#2D7D46",
+            },
+            fontFamily: {
+              sans: ["Shabnam", "Tahoma", "Arial", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <style>
+      body {
+        font-family: "Shabnam", "Tahoma", "Arial", sans-serif;
+      }
+
+      .hero-gradient {
+        background: linear-gradient(
+          135deg,
+          #ff6b35 0%,
+          #ff8c5a 50%,
+          #004e89 100%
+        );
+      }
+
+      .category-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .product-card {
+        transition: all 0.3s ease;
+      }
+
+      .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      }
+    </style>
+  </head>
+  <body class="font-sans bg-gray-50">
+    <!-- نوار بالایی -->
+    <div class="bg-primary text-white py-2 px-4 text-sm">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center space-x-4 space-x-reverse">
+          <span class="flex items-center">
+            <i data-feather="phone" class="w-4 h-4 ml-1"></i>
+            ۰۲۱-۱۲۳۴۵۶۷۸
+          </span>
+          <span class="flex items-center">
+            <i data-feather="mail" class="w-4 h-4 ml-1"></i>
+            info@amirshop.ir
+          </span>
+        </div>
+        <div class="flex items-center space-x-4 space-x-reverse">
+          <a href="/profile/index.html" class="hover:text-gray-200"
+            >حساب کاربری</a
+          >
+          <a href="tracking.html" class="hover:text-gray-200">پیگیری سفارش</a>
+          <a href="support.html" class="hover:text-gray-200">پشتیبانی</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- هدر اصلی -->
+    <header class="bg-white shadow-sm sticky top-0 z-40">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+          <!-- لوگو و منو -->
+          <div
+            class="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0"
+          >
+            <a
+              href="index.html"
+              class="text-2xl font-bold text-primary hover:opacity-80 transition"
+            >
+              AmirShop
+            </a>
+            <button class="md:hidden" id="menuToggle">
+              <i data-feather="menu" class="w-6 h-6"></i>
+            </button>
+          </div>
+
+          <!-- منوی ناوبری -->
+          <nav class="hidden md:flex space-x-8 space-x-reverse" id="mainNav">
+            <a
+              href="index.html"
+              class="font-medium text-gray-700 hover:text-primary transition"
+              >خانه</a
+            >
+            <a
+              href="products.html"
+              class="font-medium text-gray-700 hover:text-primary transition"
+              >محصولات</a
+            >
+            <a
+              href="blog.html"
+              class="font-medium text-gray-700 hover:text-primary transition"
+              >مقالات</a
+            >
+            <a
+              href="about.html"
+              class="font-medium text-gray-700 hover:text-primary transition"
+              >درباره ما</a
+            >
+            <a
+              href="contact.html"
+              class="font-medium text-gray-700 hover:text-primary transition"
+              >تماس با ما</a
+            >
+          </nav>
+
+          <!-- ابزارهای کاربر -->
+          <div class="flex items-center space-x-4 space-x-reverse mt-4 md:mt-0">
+            <!-- جستجو -->
+            <div class="relative hidden md:block">
+              <input
+                type="text"
+                placeholder="جستجوی محصولات..."
+                class="border border-gray-300 rounded-full py-2 px-4 pr-10 w-64 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+              />
+              <i
+                data-feather="search"
+                class="absolute left-3 top-2.5 text-gray-400 w-4 h-4"
+              ></i>
+            </div>
+
+            <!-- سبد خرید و کاربر -->
+            <div class="flex items-center space-x-3 space-x-reverse">
+              <a href="cart.html" class="relative">
+                <i
+                  data-feather="shopping-cart"
+                  class="w-6 h-6 text-gray-700 hover:text-primary transition"
+                ></i>
+                <span
+                  class="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center"
+                  >۳</span
+                >
+              </a>
+              <a href="login.html" class="hidden md:block">
+                <i
+                  data-feather="user"
+                  class="w-6 h-6 text-gray-700 hover:text-primary transition"
+                ></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- بخش Hero -->
+    <section class="hero-gradient text-white py-20 md:py-28">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+          <div class="md:w-1/2 mb-10 md:mb-0 text-center md:text-right">
+            <h1
+              class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+            >
+              مکمل‌های ورزشی
+              <span class="text-yellow-300">با کیفیت</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 leading-relaxed opacity-90">
+              بهترین برندهای جهانی با تضمین اصالت کالا
+              <br />و مناسب‌ترین قیمت‌ها در ایران
+            </p>
+            <div
+              class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
+            >
+              <a
+                href="products.html"
+                class="bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition shadow-lg text-center"
+              >
+                🛒 محصولات ویژه
+              </a>
+              <a
+                href="consultation.html"
+                class="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-primary transition text-center"
+              >
+                💪 مشاوره رایگان
+              </a>
+            </div>
+
+            <div
+              class="flex flex-wrap justify-center md:justify-start gap-6 mt-12 pt-8 border-t border-white/20"
+            >
+              <div class="text-center">
+                <div class="text-2xl md:text-3xl font-bold text-yellow-300">
+                  ۵۰۰+
+                </div>
+                <div class="text-lg opacity-90">محصول متنوع</div>
+              </div>
+              <div class="text-center">
+                <div class="text-2xl md:text-3xl font-bold text-yellow-300">
+                  ۱۰,۰۰۰+
+                </div>
+                <div class="text-lg opacity-90">مشتری راضی</div>
+              </div>
+              <div class="text-center">
+                <div class="text-2xl md:text-3xl font-bold text-yellow-300">
+                  ۹۸٪
+                </div>
+                <div class="text-lg opacity-90">رضایت مشتری</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="md:w-1/2 flex justify-center">
+            <div class="relative">
+              <div
+                class="bg-white/10 backdrop-blur-sm rounded-3xl p-6 border border-white/20 shadow-2xl"
+              >
+                <img
+                  src="/images/john-fornander-_0NZ82U6Gio-unsplash(1)(1).png"
+                  alt="مکمل‌های ورزشی"
+                  class="rounded-2xl shadow-2xl w-full max-w-md"
+                />
+              </div>
+
+              <!-- برچسب‌های شناور -->
+              <div
+                class="absolute -top-4 -right-4 bg-red-500 text-white px-4 py-2 rounded-full shadow-lg text-sm font-bold"
+              >
+                🏆 پرفروش‌ترین
+              </div>
+              <div
+                class="absolute -bottom-4 -left-4 bg-green-500 text-white px-4 py-2 rounded-full shadow-lg text-sm font-bold"
+              >
+                ✅ تضمین اصالت
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- دسته‌بندی محصولات -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+            دسته‌بندی محصولات
+          </h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            کشف کنید گستره کامل مکمل‌ها و تجهیزات ورزشی ما
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+          <!-- پروتئین -->
+          <a
+            href="category-protein.html"
+            class="category-hover bg-gray-50 rounded-2xl p-4 text-center transition-all duration-300 border border-gray-200"
+          >
+            <div
+              class="bg-gradient-to-br from-primary to-orange-400 rounded-2xl w-16 h-16 flex items-center justify-center mx-auto mb-3"
+            >
+              <span class="text-white text-2xl">🥛</span>
+            </div>
+            <h3 class="font-bold text-gray-800">پروتئین</h3>
+            <p class="text-sm text-gray-500 mt-1">۱۵۲ محصول</p>
+          </a>
+
+          <!-- گینر -->
+          <a
+            href="category-gainer.html"
+            class="category-hover bg-gray-50 rounded-2xl p-4 text-center transition-all duration-300 border border-gray-200"
+          >
+            <div
+              class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl w-16 h-16 flex items-center justify-center mx-auto mb-3"
+            >
+              <span class="text-white text-2xl">📊</span>
+            </div>
+            <h3 class="font-bold text-gray-800">گینر</h3>
+            <p class="text-sm text-gray-500 mt-1">۸۷ محصول</p>
+          </a>
+
+          <!-- پری‌ورکاوت -->
+          <a
+            href="category-preworkout.html"
+            class="category-hover bg-gray-50 rounded-2xl p-4 text-center transition-all duration-300 border border-gray-200"
+          >
+            <div
+              class="bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl w-16 h-16 flex items-center justify-center mx-auto mb-3"
+            >
+              <span class="text-white text-2xl">⚡</span>
+            </div>
+            <h3 class="font-bold text-gray-800">پری‌ورکاوت</h3>
+            <p class="text-sm text-gray-500 mt-1">۶۳ محصول</p>
+          </a>
+
+          <!-- آمینواسید -->
+          <a
+            href="category-amino.html"
+            class="category-hover bg-gray-50 rounded-2xl p-4 text-center transition-all duration-300 border border-gray-200"
+          >
+            <div
+              class="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl w-16 h-16 flex items-center justify-center mx-auto mb-3"
+            >
+              <span class="text-white text-2xl">🛡️</span>
+            </div>
+            <h3 class="font-bold text-gray-800">آمینواسید</h3>
+            <p class="text-sm text-gray-500 mt-1">۹۸ محصول</p>
+          </a>
+
+          <!-- ویتامین‌ها -->
+          <a
+            href="category-vitamins.html"
+            class="category-hover bg-gray-50 rounded-2xl p-4 text-center transition-all duration-300 border border-gray-200"
+          >
+            <div
+              class="bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl w-16 h-16 flex items-center justify-center mx-auto mb-3"
+            >
+              <span class="text-white text-2xl">❤️</span>
+            </div>
+            <h3 class="font-bold text-gray-800">ویتامین‌ها</h3>
+            <p class="text-sm text-gray-500 mt-1">۷۴ محصول</p>
+          </a>
+
+          <!-- لوازم ورزشی -->
+          <a
+            href="category-equipment.html"
+            class="category-hover bg-gray-50 rounded-2xl p-4 text-center transition-all duration-300 border border-gray-200"
+          >
+            <div
+              class="bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl w-16 h-16 flex items-center justify-center mx-auto mb-3"
+            >
+              <span class="text-white text-2xl"></span>
+            </div>
+            <h3 class="font-bold text-gray-800">لوازم ورزشی</h3>
+            <p class="text-sm text-gray-500 mt-1">۱۳۴ محصول</p>
+          </a>
+
+          <!-- ارگانیک -->
+          <a
+            href="category-organic.html"
+            class="category-hover bg-gray-50 rounded-2xl p-4 text-center transition-all duration-300 border border-gray-200"
+          >
+            <div
+              class="bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl w-16 h-16 flex items-center justify-center mx-auto mb-3"
+            >
+              <span class="text-white text-2xl">🌿</span>
+            </div>
+            <h3 class="font-bold text-gray-800">ارگانیک</h3>
+            <p class="text-sm text-gray-500 mt-1">۴۵ محصول</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- محصولات ویژه -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center mb-12"
+        >
+          <div>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              محصولات ویژه
+            </h2>
+            <p class="text-xl text-gray-600">برترین مکمل‌ها با بهترین قیمت</p>
+          </div>
+          <a
+            href="products.html"
+            class="mt-4 md:mt-0 inline-flex items-center bg-white hover:bg-primary text-gray-700 hover:text-white px-6 py-3 rounded-xl font-bold transition duration-300 border border-gray-200 hover:border-primary group"
+          >
+            مشاهده همه محصولات
+            <i
+              data-feather="arrow-left"
+              class="w-5 h-5 mr-2 group-hover:transform group-hover:-translate-x-1 transition"
+            ></i>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- محصول ۱ -->
+          <div
+            class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1594736797933-d0ea3ff8db41?w=400&h=300&fit=crop"
+                alt="پروتئین وی"
+                class="w-full h-48 object-cover hover:scale-105 transition duration-500"
+              />
+              <div
+                class="absolute top-3 left-3 bg-red-500 text-white text-sm px-3 py-1 rounded-full"
+              >
+                ۲۰٪ تخفیف
+              </div>
+              <button
+                class="absolute top-3 right-3 bg-white/90 hover:bg-red-500 text-gray-600 hover:text-white rounded-full w-10 h-10 flex items-center justify-center transition duration-300"
+              >
+                <i data-feather="heart" class="w-5 h-5"></i>
+              </button>
+            </div>
+
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <span
+                  class="text-sm text-green-600 bg-green-50 px-2 py-1 rounded"
+                  >موجود</span
+                >
+                <div class="flex text-yellow-400">
+                  <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                  <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                  <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                  <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                  <i data-feather="star" class="w-4 h-4"></i>
+                </div>
+              </div>
+
+              <a href="product-detail.html" class="block mb-2">
+                <h3 class="font-bold text-lg hover:text-primary transition">
+                  پروتئین وی اپتیموم ناتریشن ۲.۲۷ کیلویی
+                </h3>
+              </a>
+
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-2 space-x-reverse">
+                  <span class="text-gray-500 line-through text-sm"
+                    >۲,۵۰۰,۰۰۰ تومان</span
+                  >
+                  <span class="text-2xl font-bold text-primary"
+                    >۲,۰۰۰,۰۰۰ تومان</span
+                  >
+                </div>
+              </div>
+
+              <div class="flex space-x-2 space-x-reverse">
+                <button
+                  class="flex-1 bg-primary hover:bg-orange-600 text-white py-3 rounded-xl font-bold transition duration-300 flex items-center justify-center group"
+                >
+                  افزودن به سبد
+                  <i
+                    data-feather="shopping-cart"
+                    class="w-5 h-5 mr-2 group-hover:scale-110 transition"
+                  ></i>
+                </button>
+                <button
+                  class="w-12 h-12 border border-gray-300 hover:border-primary rounded-xl flex items-center justify-center transition duration-300"
+                >
+                  <i data-feather="eye" class="w-5 h-5 text-gray-600"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- محصول ۲ -->
+          <div
+            class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop"
+                alt="گینر ماسل تک"
+                class="w-full h-48 object-cover hover:scale-105 transition duration-500"
+              />
+              <div
+                class="absolute top-3 left-3 bg-blue-500 text-white text-sm px-3 py-1 rounded-full"
+              >
+                جدید
+              </div>
+              <button
+                class="absolute top-3 right-3 bg-white/90 hover:bg-red-500 text-gray-600 hover:text-white rounded-full w-10 h-10 flex items-center justify-center transition duration-300"
+              >
+                <i data-feather="heart" class="w-5 h-5"></i>
+              </button>
+            </div>
+
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <span
+                  class="text-sm text-green-600 bg-green-50 px-2 py-1 rounded"
+                  >موجود</span
+                >
+                <div class="flex text-yellow-400">
+                  <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                  <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                  <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                  <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                  <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                </div>
+              </div>
+
+              <a href="product-detail.html" class="block mb-2">
+                <h3 class="font-bold text-lg hover:text-primary transition">
+                  گینر سریع جذب ماسل تک ۵.۵ کیلویی
+                </h3>
+              </a>
+
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl font-bold text-primary"
+                  >۲,۹۹۰,۰۰۰ تومان</span
+                >
+              </div>
+
+              <div class="flex space-x-2 space-x-reverse">
+                <button
+                  class="flex-1 bg-primary hover:bg-orange-600 text-white py-3 rounded-xl font-bold transition duration-300 flex items-center justify-center group"
+                >
+                  افزودن به سبد
+                  <i
+                    data-feather="shopping-cart"
+                    class="w-5 h-5 mr-2 group-hover:scale-110 transition"
+                  ></i>
+                </button>
+                <button
+                  class="w-12 h-12 border border-gray-300 hover:border-primary rounded-xl flex items-center justify-center transition duration-300"
+                >
+                  <i data-feather="eye" class="w-5 h-5 text-gray-600"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- محصول ۳ و ۴ رو می‌تونی اضافه کنی -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ویژگی‌های فروشگاه -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+            چرا AmirShop را انتخاب کنید؟
+          </h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            با اطمینان خرید کنید، ما کیفیت و رضایت شما را تضمین می‌کنیم
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- ویژگی ۱ -->
+          <div class="text-center">
+            <div
+              class="bg-gradient-to-br from-primary to-orange-400 rounded-2xl w-20 h-20 flex items-center justify-center mx-auto mb-6"
+            >
+              <i data-feather="shield" class="text-white w-10 h-10"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-4">تضمین اصالت کالا</h3>
+            <p class="text-gray-600 leading-relaxed">
+              کلیه محصولات با ضمانت اصل بودن و گارانتی بازگشت وجه عرضه می‌شوند
+            </p>
+          </div>
+
+          <!-- ویژگی ۲ -->
+          <div class="text-center">
+            <div
+              class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl w-20 h-20 flex items-center justify-center mx-auto mb-6"
+            >
+              <i data-feather="truck" class="text-white w-10 h-10"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-4">ارسال سریع</h3>
+            <p class="text-gray-600 leading-relaxed">
+              ارسال رایگان برای خریدهای بالای ۱ میلیون تومان در تهران همان روز
+            </p>
+          </div>
+
+          <!-- ویژگی ۳ -->
+          <div class="text-center">
+            <div
+              class="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl w-20 h-20 flex items-center justify-center mx-auto mb-6"
+            >
+              <i data-feather="credit-card" class="text-white w-10 h-10"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-4">پرداخت امن</h3>
+            <p class="text-gray-600 leading-relaxed">
+              امکان پرداخت آنلاین امن و پرداخت در محل با تمامی کارت‌های بانکی
+            </p>
+          </div>
+
+          <!-- ویژگی ۴ -->
+          <div class="text-center">
+            <div
+              class="bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl w-20 h-20 flex items-center justify-center mx-auto mb-6"
+            >
+              <i data-feather="users" class="text-white w-10 h-10"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-4">مشاوره تخصصی</h3>
+            <p class="text-gray-600 leading-relaxed">
+              مشاوره رایگان توسط متخصصین تغذیه ورزشی و مربیان حرفه‌ای
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- مقالات آموزشی -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center mb-12"
+        >
+          <div>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              مقالات آموزشی
+            </h2>
+            <p class="text-xl text-gray-600">
+              آخرین مطالب تخصصی در زمینه تغذیه و تمرینات
+            </p>
+          </div>
+          <a
+            href="blog.html"
+            class="mt-4 md:mt-0 inline-flex items-center bg-primary hover:bg-orange-600 text-white px-6 py-3 rounded-xl font-bold transition duration-300 group"
+          >
+            مشاهده همه مقالات
+            <i
+              data-feather="arrow-left"
+              class="w-5 h-5 mr-2 group-hover:transform group-hover:-translate-x-1 transition"
+            ></i>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- مقاله ۱ -->
+          <article
+            class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+          >
+            <div class="relative overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=250&fit=crop"
+                alt="مقاله"
+                class="w-full h-48 object-cover hover:scale-105 transition duration-500"
+              />
+              <div class="absolute top-4 right-4">
+                <span
+                  class="bg-primary text-white text-sm px-3 py-1 rounded-full"
+                  >تغذیه ورزشی</span
+                >
+              </div>
+            </div>
+
+            <div class="p-6">
+              <div class="flex items-center text-sm text-gray-500 mb-3">
+                <i data-feather="calendar" class="w-4 h-4 ml-1"></i>
+                <span>۱۴۰۲/۱۰/۱۵</span>
+                <i data-feather="clock" class="w-4 h-4 mr-4 ml-2"></i>
+                <span>۵ دقیقه</span>
+              </div>
+
+              <h3 class="text-xl font-bold mb-3 hover:text-primary transition">
+                <a href="article.html"
+                  >بهترین زمان مصرف پروتئین وی برای عضله سازی</a
+                >
+              </h3>
+
+              <p class="text-gray-600 leading-relaxed mb-4">
+                در این مقاله بهترین زمان‌های مصرف پروتئین وی را برای حداکثر
+                عضله‌سازی بررسی می‌کنیم...
+              </p>
+
+              <a
+                href="article.html"
+                class="text-primary font-bold flex items-center text-sm hover:underline"
+              >
+                ادامه مطلب
+                <i data-feather="arrow-left" class="w-4 h-4 mr-1"></i>
+              </a>
+            </div>
+          </article>
+
+          <!-- مقاله ۲ و ۳ رو می‌تونی اضافه کنی -->
+        </div>
+      </div>
+    </section>
+
+    <!-- فوتر -->
+    <footer class="bg-gray-800 text-white pt-12 pb-8">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <!-- درباره ما -->
+          <div>
+            <h3 class="text-2xl font-bold mb-6 text-primary">AmirShop</h3>
+            <p class="text-gray-300 leading-relaxed mb-6">
+              فروشگاه تخصصی مکمل‌های ورزشی با تضمین اصالت کالا و مناسب‌ترین
+              قیمت‌ها. ما بهترین برندهای جهانی را با گارانتی اصل بودن ارائه
+              می‌دهیم.
+            </p>
+            <div class="flex space-x-4 space-x-reverse">
+              <a
+                href="#"
+                class="bg-primary hover:bg-orange-600 w-10 h-10 rounded-full flex items-center justify-center transition duration-300"
+              >
+                <i data-feather="instagram" class="w-5 h-5"></i>
+              </a>
+              <a
+                href="#"
+                class="bg-primary hover:bg-orange-600 w-10 h-10 rounded-full flex items-center justify-center transition duration-300"
+              >
+                <i data-feather="telegram" class="w-5 h-5"></i>
+              </a>
+              <a
+                href="#"
+                class="bg-primary hover:bg-orange-600 w-10 h-10 rounded-full flex items-center justify-center transition duration-300"
+              >
+                <i data-feather="twitter" class="w-5 h-5"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- دسترسی سریع -->
+          <div>
+            <h4 class="text-xl font-bold mb-6">دسترسی سریع</h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="index.html"
+                  class="text-gray-300 hover:text-primary transition"
+                  >خانه</a
+                >
+              </li>
+              <li>
+                <a
+                  href="products.html"
+                  class="text-gray-300 hover:text-primary transition"
+                  >محصولات</a
+                >
+              </li>
+              <li>
+                <a
+                  href="blog.html"
+                  class="text-gray-300 hover:text-primary transition"
+                  >مقالات</a
+                >
+              </li>
+              <li>
+                <a
+                  href="about.html"
+                  class="text-gray-300 hover:text-primary transition"
+                  >درباره ما</a
+                >
+              </li>
+              <li>
+                <a
+                  href="contact.html"
+                  class="text-gray-300 hover:text-primary transition"
+                  >تماس با ما</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- خدمات مشتریان -->
+          <div>
+            <h4 class="text-xl font-bold mb-6">خدمات مشتریان</h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="tracking.html"
+                  class="text-gray-300 hover:text-primary transition"
+                  >پیگیری سفارش</a
+                >
+              </li>
+              <li>
+                <a
+                  href="return-policy.html"
+                  class="text-gray-300 hover:text-primary transition"
+                  >شرایط بازگرداندن</a
+                >
+              </li>
+              <li>
+                <a
+                  href="faq.html"
+                  class="text-gray-300 hover:text-primary transition"
+                  >سوالات متداول</a
+                >
+              </li>
+              <li>
+                <a
+                  href="support.html"
+                  class="text-gray-300 hover:text-primary transition"
+                  >پشتیبانی</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- اطلاعات تماس -->
+          <div>
+            <h4 class="text-xl font-bold mb-6">اطلاعات تماس</h4>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <i
+                  data-feather="map-pin"
+                  class="w-5 h-5 text-primary mt-1 ml-2"
+                ></i>
+                <div>
+                  <p class="text-gray-300">تهران، خیابان ولیعصر، پلاک ۱۲۳۴</p>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <i data-feather="phone" class="w-5 h-5 text-primary ml-2"></i>
+                <a
+                  href="tel:+982112345678"
+                  class="text-gray-300 hover:text-primary transition"
+                  >۰۲۱-۱۲۳۴۵۶۷۸</a
+                >
+              </div>
+              <div class="flex items-center">
+                <i data-feather="mail" class="w-5 h-5 text-primary ml-2"></i>
+                <a
+                  href="mailto:amirhosseinfiroozi84@gmail.com"
+                  class="text-gray-300 hover:text-primary transition"
+                  >amirshop.ir</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- خط جداکننده -->
+        <div class="border-t border-gray-700 pt-8 text-center">
+          <p class="text-gray-400">
+            © 1404 - کلیه حقوق برای AmirShop محفوظ است.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- اسکریپت‌ها -->
+    <script>
+      // مقداردهی اولیه Feather Icons
+      feather.replace();
+
+      // منوی موبایل
+      document
+        .getElementById("menuToggle")
+        ?.addEventListener("click", function () {
+          const nav = document.getElementById("mainNav");
+          nav.classList.toggle("hidden");
+          nav.classList.toggle("flex");
+          nav.classList.toggle("flex-col");
+          nav.classList.toggle("absolute");
+          nav.classList.toggle("bg-white");
+          nav.classList.toggle("w-full");
+          nav.classList.toggle("top-20");
+          nav.classList.toggle("left-0");
+          nav.classList.toggle("p-4");
+          nav.classList.toggle("shadow-lg");
+        });
+    </script>
+  </body>
+</html>

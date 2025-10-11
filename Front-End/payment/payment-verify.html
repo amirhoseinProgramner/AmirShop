@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تأیید پرداخت - AmirShop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="css/styles/font.css" />
+  </head>
+  <body class="bg-gray-50">
+    <div class="min-h-screen flex items-center justify-center px-4">
+      <div class="max-w-md w-full">
+        <div class="bg-white rounded-lg shadow-sm p-8 text-center">
+          <!-- انیمیشن لودینگ -->
+          <div
+            class="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-6"
+          ></div>
+
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">
+            در حال انتقال به درگاه پرداخت
+          </h2>
+          <p class="text-gray-600 mb-6">لطفاً چند لحظه صبر کنید...</p>
+
+          <div
+            class="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-blue-700 mb-6"
+          >
+            <div
+              class="flex items-center justify-center space-x-2 space-x-reverse"
+            >
+              <i data-feather="shield" class="w-4 h-4"></i>
+              <span>ارتباط شما با درگاه بانکی امن است</span>
+            </div>
+          </div>
+
+          <!-- اطلاعات تراکنش -->
+          <div class="bg-gray-50 rounded-lg p-4 text-sm text-left">
+            <div class="flex justify-between mb-2">
+              <span>شماره سفارش:</span>
+              <span class="font-mono">ORD-1402-789456</span>
+            </div>
+            <div class="flex justify-between mb-2">
+              <span>مبلغ قابل پرداخت:</span>
+              <span class="font-bold">3,005,000 تومان</span>
+            </div>
+            <div class="flex justify-between">
+              <span>روش پرداخت:</span>
+              <span>درگاه بانک سامان</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- راهنمایی -->
+        <div class="text-center mt-6 text-sm text-gray-500">
+          <p>اگر پس از 30 ثانیه به درگاه منتقل نشدید، دکمه زیر را بفشارید</p>
+          <button
+            onclick="retryPayment()"
+            class="mt-2 text-primary hover:text-primary-dark"
+          >
+            تلاش مجدد
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      feather.replace();
+
+      // شبیه‌سازی انتقال به درگاه
+      setTimeout(() => {
+        // در واقعیت اینجا کاربر به درگاه بانک منتقل می‌شود
+        // و پس از پرداخت به success page برمی‌گردد
+        window.location.href =
+          "order-success.html?order=ORD-1402-789456&amount=3005000";
+      }, 5000);
+
+      function retryPayment() {
+        window.location.href = "payment.html";
+      }
+    </script>
+  </body>
+</html>

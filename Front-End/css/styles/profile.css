@@ -1,0 +1,128 @@
+/* استایل‌های مخصوص پروفایل */
+.profile-nav-link {
+  @apply flex items-center justify-between px-4 py-3 text-gray-700 rounded-lg transition-all duration-200;
+}
+
+.profile-nav-link:hover {
+  @apply bg-gray-100 text-gray-900;
+}
+
+.profile-nav-link.active {
+  @apply bg-primary text-white;
+}
+
+.profile-nav-link.active:hover {
+  @apply bg-primary-dark text-white;
+}
+
+.profile-badge {
+  @apply bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center;
+}
+
+.profile-info-value {
+  @apply bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 text-gray-800;
+}
+
+/* استایل‌های سفارشات */
+.order-filter-btn {
+  @apply px-4 py-2 border border-gray-300 rounded-lg text-sm transition-colors;
+}
+
+.order-filter-btn:hover {
+  @apply border-primary text-primary;
+}
+
+.order-filter-btn.active {
+  @apply bg-primary text-white border-primary;
+}
+
+.order-card {
+  @apply bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden transition-all duration-200;
+}
+
+.order-card:hover {
+  @apply shadow-md;
+}
+
+.order-status {
+  @apply px-3 py-1 rounded-full text-xs font-medium;
+}
+
+.order-status-pending {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+.order-status-processing {
+  @apply bg-blue-100 text-blue-800;
+}
+
+.order-status-shipped {
+  @apply bg-purple-100 text-purple-800;
+}
+
+.order-status-delivered {
+  @apply bg-green-100 text-green-800;
+}
+
+.order-status-cancelled {
+  @apply bg-red-100 text-red-800;
+}
+
+/* انیمیشن‌ها */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* استایل‌های ریسپانسیو */
+@media (max-width: 768px) {
+  .profile-nav-link {
+    @apply px-3 py-2 text-sm;
+  }
+
+  .order-filter-btn {
+    @apply px-3 py-1 text-xs;
+  }
+}
+
+/* استایل‌های فرم */
+.profile-input {
+  @apply w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors;
+}
+
+.profile-label {
+  @apply block text-sm font-medium text-gray-700 mb-2;
+}
+
+.profile-btn-primary {
+  @apply bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition-colors font-medium;
+}
+
+.profile-btn-secondary {
+  @apply border border-gray-300 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-50 transition-colors font-medium;
+}
