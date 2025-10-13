@@ -3,10 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>نام محصول - AmirShop</title>
+    <title>محصول - AmirShop</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/feather-icons"></script>
-    <link rel="stylesheet" href="css/styles/font.css" />
+    <link rel="stylesheet" href="/Front-End/css/styles/font.css" />
+    <style>
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+      }
+      .thumb-active {
+        border: 2px solid #3b82f6;
+      }
+      .flavor-active {
+        background: #3b82f6;
+        color: white;
+      }
+    </style>
   </head>
   <body class="bg-gray-50">
     <!-- هدر -->
@@ -14,15 +29,15 @@
       <div class="container mx-auto px-4">
         <div class="flex justify-between items-center">
           <a href="index.html" class="text-2xl font-bold text-primary"
-            >AmirShop</a
+            >🏋️‍♂️ AmirShop</a
           >
           <nav class="hidden md:flex space-x-6 space-x-reverse">
             <a href="index.html" class="hover:text-primary">خانه</a>
-            <a href="products.html" class="font-bold border-b-2 border-primary"
-              >محصولات</a
-            >
+            <a href="products.html" class="hover:text-primary">محصولات</a>
             <a href="blog.html" class="hover:text-primary">مقالات</a>
-            <a href="about.html" class="hover:text-primary">درباره ما</a>
+            <a href="profile/index.html" class="hover:text-primary"
+              >حساب کاربری</a
+            >
           </nav>
         </div>
       </div>
@@ -30,179 +45,426 @@
 
     <!-- محتوای محصول -->
     <main class="container mx-auto px-4 py-8">
-      <div class="bg-white rounded-lg shadow-sm p-6">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div class="max-w-6xl mx-auto">
+        <!-- مسیر ناوبری -->
+        <nav
+          class="flex items-center space-x-2 space-x-reverse text-sm text-gray-600 mb-6"
+        >
+          <a href="index.html" class="hover:text-primary">خانه</a>
+          <i data-feather="chevron-left" class="w-4 h-4"></i>
+          <a href="products.html" class="hover:text-primary">محصولات</a>
+          <i data-feather="chevron-left" class="w-4 h-4"></i>
+          <span id="productCategory" class="text-gray-400"
+            >در حال بارگذاری...</span
+          >
+        </nav>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
           <!-- گالری تصاویر -->
           <div>
-            <img
-              id="productMainImage"
-              src="https://images.unsplash.com/photo-1594736797933-d0c1382d7c2e?w=600&h=600&fit=crop"
-              alt="نام محصول"
-              class="w-full rounded-lg mb-4"
-            />
-            <div class="grid grid-cols-4 gap-2">
+            <div class="bg-white rounded-lg shadow-sm p-6">
+              <!-- تصویر اصلی -->
               <img
-                src="https://images.unsplash.com/photo-1594736797933-d0c1382d7c2e?w=150&h=150&fit=crop"
-                alt="تصویر ۱"
-                class="cursor-pointer border-2 border-transparent hover:border-primary rounded"
-                onclick="changeImage(this.src)"
+                id="mainImage"
+                src="https://images.unsplash.com/photo-1594736797933-d0c1382d7c2e?w=600&h=600&fit=crop"
+                alt="محصول"
+                class="w-full h-96 object-cover rounded-lg mb-4"
               />
-              <img
-                src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=150&h=150&fit=crop"
-                alt="تصویر ۲"
-                class="cursor-pointer border-2 border-transparent hover:border-primary rounded"
-                onclick="changeImage(this.src)"
-              />
+
+              <!-- تصاویر کوچک -->
+              <div class="grid grid-cols-4 gap-2">
+                <img
+                  src="https://images.unsplash.com/photo-1594736797933-d0c1382d7c2e?w=150&h=150&fit=crop"
+                  alt="تصویر ۱"
+                  class="h-20 object-cover rounded cursor-pointer border-2 border-primary thumb-active"
+                  onclick="changeImage(this.src)"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=150&h=150&fit=crop"
+                  alt="تصویر ۲"
+                  class="h-20 object-cover rounded cursor-pointer border-2 border-transparent hover:border-gray-300"
+                  onclick="changeImage(this.src)"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=150&h=150&fit=crop"
+                  alt="تصویر ۳"
+                  class="h-20 object-cover rounded cursor-pointer border-2 border-transparent hover:border-gray-300"
+                  onclick="changeImage(this.src)"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=150&h=150&fit=crop"
+                  alt="تصویر ۴"
+                  class="h-20 object-cover rounded cursor-pointer border-2 border-transparent hover:border-gray-300"
+                  onclick="changeImage(this.src)"
+                />
+              </div>
             </div>
           </div>
 
           <!-- اطلاعات محصول -->
           <div>
-            <span
-              class="bg-primary text-white px-3 py-1 rounded-full text-sm"
-              id="productCategory"
-              >پروتئین</span
-            >
-            <h1 id="productName" class="text-3xl font-bold mt-4 mb-2">
-              نام محصول
-            </h1>
-            <div class="flex items-center mb-4">
-              <div class="flex items-center space-x-1 space-x-reverse">
-                <i
-                  data-feather="star"
-                  class="w-5 h-5 text-yellow-400 fill-current"
-                ></i>
-                <span id="productRating" class="text-gray-700">4.8</span>
-                <span class="text-gray-400">(</span>
-                <span id="productReviews" class="text-gray-400">124</span>
-                <span class="text-gray-400">نظر)</span>
+            <div class="bg-white rounded-lg shadow-sm p-6">
+              <!-- دسته‌بندی و برند -->
+              <div class="flex items-center space-x-4 space-x-reverse mb-4">
+                <span
+                  id="productCategoryBadge"
+                  class="bg-primary text-white px-3 py-1 rounded-full text-sm"
+                  >پروتئین</span
+                >
+                <span id="productBrand" class="text-gray-600"
+                  >Optimum Nutrition</span
+                >
               </div>
-            </div>
 
-            <div class="mb-6">
-              <span id="productPrice" class="text-3xl font-bold text-primary"
-                >۲,۳۰۰,۰۰۰ تومان</span
+              <!-- عنوان محصول -->
+              <h1
+                id="productName"
+                class="text-3xl font-bold text-gray-800 mb-4"
               >
-              <span
-                id="productOriginalPrice"
-                class="text-xl text-gray-400 line-through mr-4"
-                >۲,۶۰۰,۰۰۰ تومان</span
-              >
-              <span
-                id="productDiscount"
-                class="bg-red-100 text-red-600 px-2 py-1 rounded text-sm"
-                >۱۲٪ تخفیف</span
-              >
-            </div>
+                پروتئین وی ایزوله 2 کیلویی
+              </h1>
 
-            <!-- انتخاب سایز/طعم -->
-            <div class="mb-6">
-              <h3 class="font-bold mb-3">طعم:</h3>
-              <div class="flex flex-wrap gap-2">
-                <button
-                  class="border border-gray-300 px-4 py-2 rounded-lg hover:border-primary"
+              <!-- امتیاز و نظرات -->
+              <div class="flex items-center space-x-4 space-x-reverse mb-6">
+                <div class="flex items-center space-x-1 space-x-reverse">
+                  <i
+                    data-feather="star"
+                    class="w-5 h-5 text-yellow-400 fill-current"
+                  ></i>
+                  <span id="productRating" class="font-bold">4.8</span>
+                  <span class="text-gray-400">(</span>
+                  <span id="productReviews" class="text-gray-400">124</span>
+                  <span class="text-gray-400">نظر)</span>
+                </div>
+                <span id="productStock" class="text-green-600 font-medium"
+                  >✓ موجود در انبار</span
                 >
-                  شکلاتی
+              </div>
+
+              <!-- قیمت -->
+              <div class="mb-6">
+                <div class="flex items-center space-x-4 space-x-reverse">
+                  <span
+                    id="productPrice"
+                    class="text-3xl font-bold text-primary"
+                    >۲,۳۰۰,۰۰۰ تومان</span
+                  >
+                  <span
+                    id="productOriginalPrice"
+                    class="text-xl text-gray-400 line-through"
+                    >۲,۶۰۰,۰۰۰ تومان</span
+                  >
+                  <span
+                    id="productDiscount"
+                    class="bg-red-100 text-red-600 px-2 py-1 rounded text-sm"
+                    >۱۲٪ تخفیف</span
+                  >
+                </div>
+              </div>
+
+              <!-- انتخاب طعم -->
+              <div class="mb-6">
+                <h3 class="font-bold mb-3">طعم:</h3>
+                <div class="flex flex-wrap gap-2" id="flavorSelection">
+                  <button
+                    class="flavor-btn border border-gray-300 px-4 py-2 rounded-lg hover:border-primary flavor-active"
+                    data-flavor="شکلاتی"
+                  >
+                    شکلاتی
+                  </button>
+                  <button
+                    class="flavor-btn border border-gray-300 px-4 py-2 rounded-lg hover:border-primary"
+                    data-flavor="وانیلی"
+                  >
+                    وانیلی
+                  </button>
+                  <button
+                    class="flavor-btn border border-gray-300 px-4 py-2 rounded-lg hover:border-primary"
+                    data-flavor="توت فرنگی"
+                  >
+                    توت فرنگی
+                  </button>
+                  <button
+                    class="flavor-btn border border-gray-300 px-4 py-2 rounded-lg hover:border-primary"
+                    data-flavor="شکلاتی-بادام"
+                  >
+                    شکلاتی-بادام
+                  </button>
+                </div>
+              </div>
+
+              <!-- انتخاب تعداد -->
+              <div class="mb-6">
+                <h3 class="font-bold mb-3">تعداد:</h3>
+                <div class="flex items-center space-x-4 space-x-reverse w-32">
+                  <button
+                    id="decreaseQty"
+                    class="w-10 h-10 border border-gray-300 rounded-lg flex items-center justify-center hover:bg-gray-50"
+                  >
+                    -
+                  </button>
+                  <span
+                    id="quantity"
+                    class="text-xl font-bold flex-1 text-center"
+                    >1</span
+                  >
+                  <button
+                    id="increaseQty"
+                    class="w-10 h-10 border border-gray-300 rounded-lg flex items-center justify-center hover:bg-gray-50"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+
+              <!-- دکمه‌های action -->
+              <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                <button
+                  class="bg-primary text-white py-3 px-8 rounded-lg hover:bg-primary-dark transition-colors font-medium flex-1 flex items-center justify-center"
+                >
+                  <i data-feather="shopping-cart" class="w-5 h-5 ml-2"></i>
+                  افزودن به سبد خرید
                 </button>
                 <button
-                  class="border border-gray-300 px-4 py-2 rounded-lg hover:border-primary"
+                  class="border border-primary text-primary py-3 px-8 rounded-lg hover:bg-primary hover:text-white transition-colors flex items-center justify-center"
                 >
-                  وانیلی
-                </button>
-                <button
-                  class="border border-gray-300 px-4 py-2 rounded-lg hover:border-primary"
-                >
-                  توت فرنگی
+                  <i data-feather="heart" class="w-5 h-5 ml-2"></i>
                 </button>
               </div>
-            </div>
 
-            <!-- انتخاب تعداد -->
-            <div class="mb-6">
-              <h3 class="font-bold mb-3">تعداد:</h3>
-              <div class="flex items-center space-x-4 space-x-reverse">
-                <button
-                  class="w-10 h-10 border border-gray-300 rounded-lg flex items-center justify-center"
-                >
-                  -
-                </button>
-                <span class="text-xl font-bold" id="quantity">1</span>
-                <button
-                  class="w-10 h-10 border border-gray-300 rounded-lg flex items-center justify-center"
-                >
-                  +
-                </button>
-              </div>
-            </div>
-
-            <!-- دکمه‌های action -->
-            <div class="flex flex-col sm:flex-row gap-4 mb-6">
-              <button
-                class="bg-primary text-white py-3 px-8 rounded-lg hover:bg-primary-dark transition-colors flex-1 flex items-center justify-center"
+              <!-- اطلاعات سریع -->
+              <div
+                class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-600"
               >
-                <i data-feather="shopping-cart" class="w-5 h-5 ml-2"></i>
-                افزودن به سبد خرید
-              </button>
-              <button
-                class="border border-primary text-primary py-3 px-8 rounded-lg hover:bg-primary hover:text-white transition-colors flex items-center justify-center"
-              >
-                <i data-feather="heart" class="w-5 h-5 ml-2"></i>
-              </button>
-            </div>
-
-            <!-- اطلاعات سریع -->
-            <div class="grid grid-cols-2 gap-4 text-sm">
-              <div class="flex items-center">
-                <i data-feather="truck" class="w-4 h-4 ml-2 text-gray-400"></i>
-                <span>ارسال رایگان برای خرید بالای ۱ میلیون</span>
-              </div>
-              <div class="flex items-center">
-                <i data-feather="shield" class="w-4 h-4 ml-2 text-gray-400"></i>
-                <span>ضمانت اصل بودن کالا</span>
+                <div class="flex items-center">
+                  <i data-feather="truck" class="w-4 h-4 ml-2"></i>
+                  <span>ارسال رایگان برای خرید بالای ۱ میلیون</span>
+                </div>
+                <div class="flex items-center">
+                  <i data-feather="shield" class="w-4 h-4 ml-2"></i>
+                  <span>ضمانت اصل بودن کالا</span>
+                </div>
+                <div class="flex items-center">
+                  <i data-feather="rotate-ccw" class="w-4 h-4 ml-2"></i>
+                  <span>۷ روز ضمانت بازگشت</span>
+                </div>
+                <div class="flex items-center">
+                  <i data-feather="clock" class="w-4 h-4 ml-2"></i>
+                  <span>تحویل ۲۴ ساعته</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- تب‌های اطلاعات محصول -->
-        <div class="mt-12">
+        <div class="bg-white rounded-lg shadow-sm">
+          <!-- هدر تب‌ها -->
           <div class="border-b">
-            <nav class="flex space-x-8 space-x-reverse">
+            <nav class="flex space-x-8 space-x-reverse" id="tabNav">
               <button
-                class="py-4 px-2 border-b-2 border-primary font-medium text-primary"
+                class="tab-btn py-4 px-2 border-b-2 border-primary font-medium text-primary"
+                data-tab="description"
               >
                 توضیحات محصول
               </button>
-              <button class="py-4 px-2 text-gray-500 hover:text-primary">
+              <button
+                class="tab-btn py-4 px-2 text-gray-500 hover:text-primary"
+                data-tab="specifications"
+              >
                 مشخصات فنی
               </button>
-              <button class="py-4 px-2 text-gray-500 hover:text-primary">
+              <button
+                class="tab-btn py-4 px-2 text-gray-500 hover:text-primary"
+                data-tab="reviews"
+              >
                 نظرات کاربران
               </button>
             </nav>
           </div>
 
-          <div class="py-6">
-            <div id="descriptionTab">
+          <!-- محتوای تب‌ها -->
+          <div class="p-6">
+            <!-- تب توضیحات -->
+            <div id="description" class="tab-content active">
               <h3 class="font-bold text-lg mb-4">توضیحات کامل محصول</h3>
               <div class="prose prose-lg max-w-none">
-                <p id="productDescription">
-                  این بخش توضیحات کامل محصول خواهد بود...
-                </p>
+                <p id="productDescription" class="mb-4">در حال بارگذاری...</p>
 
-                <h4>ویژگی‌های اصلی:</h4>
-                <ul>
+                <h4 class="font-bold mb-3">ویژگی‌های اصلی:</h4>
+                <ul class="list-disc pr-6 mb-6 space-y-2">
                   <li>حاوی ۲۴ گرم پروتئین خالص در هر سروینگ</li>
                   <li>عاری از لاکتوز و گلوتن</li>
                   <li>حاوی آمینواسیدهای ضروری</li>
                   <li>قابل استفاده برای ورزشکاران حرفه‌ای و مبتدی</li>
+                  <li>ساخت آمریکا با بالاترین استانداردهای کیفیت</li>
                 </ul>
 
-                <h4>نحوه مصرف:</h4>
-                <p>
+                <h4 class="font-bold mb-3">نحوه مصرف:</h4>
+                <p class="mb-4">
                   یک پیمانه (۳۰ گرم) را در ۳۰۰ میلی‌لیتر آب یا شیر حل کرده و بعد
                   از تمرین مصرف کنید.
                 </p>
+
+                <h4 class="font-bold mb-3">موارد مصرف:</h4>
+                <ul class="list-disc pr-6 space-y-2">
+                  <li>بعد از تمرینات ورزشی</li>
+                  <li>صبحانه به عنوان منبع پروتئین</li>
+                  <li>بین وعده‌های غذایی</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- تب مشخصات فنی -->
+            <div id="specifications" class="tab-content">
+              <h3 class="font-bold text-lg mb-4">مشخصات فنی</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                  <div class="flex justify-between border-b pb-2">
+                    <span class="text-gray-600">وزن:</span>
+                    <span id="specWeight" class="font-medium">2 کیلوگرم</span>
+                  </div>
+                  <div class="flex justify-between border-b pb-2">
+                    <span class="text-gray-600">طعم:</span>
+                    <span id="specFlavor" class="font-medium">شکلاتی</span>
+                  </div>
+                  <div class="flex justify-between border-b pb-2">
+                    <span class="text-gray-600">تعداد سروینگ:</span>
+                    <span id="specServings" class="font-medium">66 سروینگ</span>
+                  </div>
+                  <div class="flex justify-between border-b pb-2">
+                    <span class="text-gray-600">پروتئین در هر سروینگ:</span>
+                    <span id="specProtein" class="font-medium">24g</span>
+                  </div>
+                </div>
+                <div class="space-y-4">
+                  <div class="flex justify-between border-b pb-2">
+                    <span class="text-gray-600">کالری در هر سروینگ:</span>
+                    <span id="specCalories" class="font-medium">120</span>
+                  </div>
+                  <div class="flex justify-between border-b pb-2">
+                    <span class="text-gray-600">کربوهیدرات:</span>
+                    <span id="specCarbs" class="font-medium">3g</span>
+                  </div>
+                  <div class="flex justify-between border-b pb-2">
+                    <span class="text-gray-600">چربی:</span>
+                    <span id="specFat" class="font-medium">1g</span>
+                  </div>
+                  <div class="flex justify-between border-b pb-2">
+                    <span class="text-gray-600">شکر:</span>
+                    <span id="specSugar" class="font-medium">1g</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- تب نظرات کاربران -->
+            <div id="reviews" class="tab-content">
+              <div class="flex flex-col lg:flex-row gap-8">
+                <!-- آمار نظرات -->
+                <div class="lg:w-1/3">
+                  <div class="bg-gray-50 rounded-lg p-6">
+                    <h4 class="font-bold text-lg mb-4">امتیاز کاربران</h4>
+                    <div class="text-center mb-6">
+                      <div class="text-4xl font-bold text-primary mb-2">
+                        4.8
+                      </div>
+                      <div
+                        class="flex items-center justify-center space-x-1 space-x-reverse mb-2"
+                      >
+                        <i
+                          data-feather="star"
+                          class="w-5 h-5 text-yellow-400 fill-current"
+                        ></i>
+                        <i
+                          data-feather="star"
+                          class="w-5 h-5 text-yellow-400 fill-current"
+                        ></i>
+                        <i
+                          data-feather="star"
+                          class="w-5 h-5 text-yellow-400 fill-current"
+                        ></i>
+                        <i
+                          data-feather="star"
+                          class="w-5 h-5 text-yellow-400 fill-current"
+                        ></i>
+                        <i
+                          data-feather="star"
+                          class="w-5 h-5 text-yellow-400 fill-current"
+                        ></i>
+                      </div>
+                      <div class="text-gray-600">بر اساس 124 نظر</div>
+                    </div>
+
+                    <!-- توزیع امتیازات -->
+                    <div class="space-y-2">
+                      <div class="flex items-center space-x-2 space-x-reverse">
+                        <span class="text-sm w-8">5 ستاره</span>
+                        <div class="flex-1 bg-gray-200 rounded-full h-2">
+                          <div
+                            class="bg-yellow-400 h-2 rounded-full"
+                            style="width: 80%"
+                          ></div>
+                        </div>
+                        <span class="text-sm w-8">80%</span>
+                      </div>
+                      <div class="flex items-center space-x-2 space-x-reverse">
+                        <span class="text-sm w-8">4 ستاره</span>
+                        <div class="flex-1 bg-gray-200 rounded-full h-2">
+                          <div
+                            class="bg-yellow-400 h-2 rounded-full"
+                            style="width: 15%"
+                          ></div>
+                        </div>
+                        <span class="text-sm w-8">15%</span>
+                      </div>
+                      <div class="flex items-center space-x-2 space-x-reverse">
+                        <span class="text-sm w-8">3 ستاره</span>
+                        <div class="flex-1 bg-gray-200 rounded-full h-2">
+                          <div
+                            class="bg-yellow-400 h-2 rounded-full"
+                            style="width: 3%"
+                          ></div>
+                        </div>
+                        <span class="text-sm w-8">3%</span>
+                      </div>
+                      <div class="flex items-center space-x-2 space-x-reverse">
+                        <span class="text-sm w-8">2 ستاره</span>
+                        <div class="flex-1 bg-gray-200 rounded-full h-2">
+                          <div
+                            class="bg-yellow-400 h-2 rounded-full"
+                            style="width: 1%"
+                          ></div>
+                        </div>
+                        <span class="text-sm w-8">1%</span>
+                      </div>
+                      <div class="flex items-center space-x-2 space-x-reverse">
+                        <span class="text-sm w-8">1 ستاره</span>
+                        <div class="flex-1 bg-gray-200 rounded-full h-2">
+                          <div
+                            class="bg-yellow-400 h-2 rounded-full"
+                            style="width: 1%"
+                          ></div>
+                        </div>
+                        <span class="text-sm w-8">1%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- لیست نظرات -->
+                <div class="lg:w-2/3">
+                  <h4 class="font-bold text-lg mb-4">نظرات کاربران</h4>
+                  <div class="space-y-6" id="reviewsList">
+                    <!-- نظرات به صورت داینامیک لود می‌شوند -->
+                    <div class="text-center py-8">
+                      <div
+                        class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"
+                      ></div>
+                      <p class="text-gray-600 mt-2">در حال دریافت نظرات...</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -210,37 +472,11 @@
       </div>
     </main>
 
-    <!-- فوتر -->
-    <footer class="bg-gray-800 text-white py-8 mt-12">
-      <div class="container mx-auto px-4 text-center">
-        <p>© ۱۴۰۲ - کلیه حقوق برای AmirShop محفوظ است</p>
-      </div>
-    </footer>
-
+    <!-- اسکریپت‌ها -->
+    <script src="/Front-End/js/api.js"></script>
+    <script src="/Front-End/js/product-single.js"></script>
     <script>
       feather.replace();
-
-      function changeImage(src) {
-        document.getElementById("productMainImage").src = src;
-      }
-
-      // مدیریت تعداد
-      document.querySelectorAll("button").forEach((btn) => {
-        if (btn.textContent === "+") {
-          btn.addEventListener("click", () => {
-            const quantity = document.getElementById("quantity");
-            quantity.textContent = parseInt(quantity.textContent) + 1;
-          });
-        }
-        if (btn.textContent === "-") {
-          btn.addEventListener("click", () => {
-            const quantity = document.getElementById("quantity");
-            if (parseInt(quantity.textContent) > 1) {
-              quantity.textContent = parseInt(quantity.textContent) - 1;
-            }
-          });
-        }
-      });
     </script>
   </body>
 </html>
