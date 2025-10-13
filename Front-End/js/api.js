@@ -38,8 +38,7 @@ class AmirShopAPI {
         originalPrice: 2600000,
         category: "protein",
         brand: "Optimum Nutrition",
-        image:
-          "https://images.unsplash.com/photo-1594736797933-d0c1382d7c2e?w=300&h=300&fit=crop",
+        image: "",
         stock: 50,
         rating: 4.8,
         numReviews: 124,

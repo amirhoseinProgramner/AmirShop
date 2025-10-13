@@ -1,335 +1,164 @@
-// داده‌های محصولات
-let productsData = [];
-let currentPage = 1;
-const productsPerPage = 20;
-let currentFilter = "all";
+// Front-End/js/products.js
+document.addEventListener("DOMContentLoaded", function () {
+  // داده‌های نمونه برای تست
+  const sampleProducts = [
+    {
+      id: 1,
+      name: "پروتئین وی ایزوله 2 کیلویی",
+      price: "۲,۳۰۰,۰۰۰",
+      originalPrice: "۲,۶۰۰,۰۰۰",
+      image:
+        "https://images.unsplash.com/photo-1594736797933-d0c1382d7c2e?w=400&h=400&fit=crop",
+      category: "protein",
+      rating: 4.8,
+      reviews: 124,
+      discount: 12,
+    },
+    {
+      id: 2,
+      name: "کراتین مونوهیدرات 500 گرم",
+      price: "۸۰۰,۰۰۰",
+      originalPrice: "۹۵۰,۰۰۰",
+      image:
+        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop",
+      category: "creatine",
+      rating: 4.6,
+      reviews: 89,
+      discount: 16,
+    },
+    {
+      id: 3,
+      name: "BCAA 400 گرم",
+      price: "۶۵۰,۰۰۰",
+      originalPrice: "۷۸۰,۰۰۰",
+      image:
+        "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&h=400&fit=crop",
+      category: "bcaa",
+      rating: 4.5,
+      reviews: 67,
+      discount: 17,
+    },
+    {
+      id: 4,
+      name: "ویتامین D3 1000 IU",
+      price: "۱۸۰,۰۰۰",
+      originalPrice: "۲۲۰,۰۰۰",
+      image:
+        "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&h=400&fit=crop",
+      category: "vitamin",
+      rating: 4.7,
+      reviews: 156,
+      discount: 18,
+    },
+  ];
 
-// تابع بارگذاری محصولات از بک‌اند
-async function loadProductsFromBackend() {
-  try {
-    console.log("📡 در حال دریافت محصولات از بک‌اند...");
-    productsData = await api.getProducts();
-    console.log("✅ محصولات دریافت شد:", productsData.length, "محصول");
-    return productsData;
-  } catch (error) {
-    console.error("❌ خطا در بارگذاری محصولات:", error);
-    // اگر خطا داد، صفحه رو رفرش کن
-    setTimeout(() => {
-      loadProductsFromBackend();
-    }, 3000);
-    return [];
-  }
-}
+  // نمایش محصولات
+  displayProducts(sampleProducts);
+  setupEventListeners();
+});
 
-// تابع برای نمایش محصولات
-function displayProducts(productsToShow = productsData) {
+function displayProducts(products) {
   const productsGrid = document.getElementById("productsGrid");
-  if (!productsGrid) {
-    console.error("❌ المنت productsGrid پیدا نشد!");
-    return;
-  }
 
-  // نمایش loading
-  if (productsToShow.length === 0) {
-    productsGrid.innerHTML = `
-            <div class="col-span-full text-center py-12">
-                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-                <p class="text-gray-600">در حال دریافت محصولات...</p>
-            </div>
-        `;
+  if (!productsGrid) {
+    console.error('Element with id "productsGrid" not found');
     return;
   }
 
   productsGrid.innerHTML = "";
 
-  productsToShow.forEach((product) => {
-    const productCard = `
-            <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-all duration-300 transform hover:-translate-y-1" data-category="${
-              product.category
-            }">
-                <div class="relative">
-                    <a href="product-single.html?id=${product._id}">
-                        <img 
-                            src="${product.image}" 
-                            alt="${product.name}"
-                            class="w-full h-48 object-cover"
-                            onerror="this.src='https://images.unsplash.com/photo-1594736797933-d0c1382d7c2e?w=300&h=300&fit=crop'"
-                        />
-                    </a>
-                    ${
-                      product.isNew
-                        ? '<span class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-bold">جدید</span>'
-                        : ""
-                    }
-                    ${
-                      product.hasDiscount
-                        ? `<span class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">${product.discountPercent}%</span>`
-                        : ""
-                    }
-                    ${
-                      product.stock === 0
-                        ? '<span class="absolute top-2 right-2 bg-gray-500 text-white px-2 py-1 rounded text-xs font-bold">ناموجود</span>'
-                        : ""
-                    }
-                    
-                    <button class="absolute bottom-2 left-2 bg-white rounded-full p-2 shadow-md hover:bg-gray-100 transition-colors favorite-btn" data-product-id="${
-                      product._id
-                    }">
-                        <i data-feather="heart" class="w-4 h-4"></i>
-                    </button>
-                </div>
-                <div class="p-4">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-xs text-gray-500">${
-                          product.brand
-                        }</span>
-                        <div class="flex items-center space-x-1 space-x-reverse">
-                            <i data-feather="star" class="w-3 h-3 text-yellow-400 fill-current"></i>
-                            <span class="text-xs text-gray-600">${
-                              product.rating
-                            }</span>
-                            <span class="text-xs text-gray-400">(${
-                              product.numReviews
-                            })</span>
-                        </div>
-                    </div>
-                    <a href="product-single.html?id=${product._id}">
-                        <h3 class="font-medium text-sm mb-2 hover:text-primary cursor-pointer line-clamp-2">${
-                          product.name
-                        }</h3>
-                    </a>
-                    <p class="text-gray-600 text-xs mb-3 line-clamp-2">${
-                      product.description
-                    }</p>
-                    <div class="flex items-center justify-between mt-4">
-                        <div class="flex items-center space-x-2 space-x-reverse">
-                            <span class="font-bold text-lg text-primary">${
-                              typeof product.price === "number"
-                                ? product.price.toLocaleString("fa-IR")
-                                : product.price
-                            } تومان</span>
-                            ${
-                              product.originalPrice
-                                ? `<span class="text-sm text-gray-400 line-through">${
-                                    typeof product.originalPrice === "number"
-                                      ? product.originalPrice.toLocaleString(
-                                          "fa-IR"
-                                        )
-                                      : product.originalPrice
-                                  }</span>`
-                                : ""
-                            }
-                        </div>
-                        <button class="bg-primary text-white rounded-lg px-3 py-2 hover:bg-primary-dark transition-colors text-sm add-to-cart-btn ${
-                          product.stock === 0
-                            ? "opacity-50 cursor-not-allowed"
-                            : ""
-                        }" 
-                                data-product-id="${product._id}"
-                                ${product.stock === 0 ? "disabled" : ""}>
-                            <i data-feather="shopping-cart" class="w-4 h-4 inline ml-1"></i>
-                            ${product.stock === 0 ? "ناموجود" : "خرید"}
-                        </button>
-                    </div>
-                </div>
+  products.forEach((product) => {
+    const productCard = createProductCard(product);
+    productsGrid.appendChild(productCard);
+  });
+
+  // آپدیت اطلاعات صفحه
+  updatePageInfo(products.length);
+}
+
+function createProductCard(product) {
+  const card = document.createElement("div");
+  card.className =
+    "bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow";
+  card.innerHTML = `
+        <a href="product-single.html?id=${product.id}">
+            <div class="relative">
+                <img 
+                    src="${product.image}" 
+                    alt="${product.name}"
+                    class="w-full h-48 object-cover"
+                >
+                ${
+                  product.discount
+                    ? `
+                    <span class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded text-sm">
+                        ${product.discount}% تخفیف
+                    </span>
+                `
+                    : ""
+                }
             </div>
-        `;
-    productsGrid.innerHTML += productCard;
-  });
+            <div class="p-4">
+                <h3 class="font-bold text-gray-800 mb-2 hover:text-primary transition-colors">
+                    ${product.name}
+                </h3>
+                <div class="flex items-center space-x-2 space-x-reverse mb-3">
+                    <div class="flex items-center space-x-1 space-x-reverse">
+                        <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-current"></i>
+                        <span class="text-sm font-medium">${
+                          product.rating
+                        }</span>
+                    </div>
+                    <span class="text-gray-400 text-sm">(${
+                      product.reviews
+                    } نظر)</span>
+                </div>
+                <div class="flex items-center space-x-2 space-x-reverse">
+                    <span class="text-lg font-bold text-primary">${
+                      product.price
+                    } تومان</span>
+                    ${
+                      product.originalPrice
+                        ? `
+                        <span class="text-sm text-gray-400 line-through">${product.originalPrice} تومان</span>
+                    `
+                        : ""
+                    }
+                </div>
+                <button class="w-full mt-3 bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary-dark transition-colors">
+                    افزودن به سبد خرید
+                </button>
+            </div>
+        </a>
+    `;
 
-  // آپدیت آیکون‌ها
-  feather.replace();
+  return card;
 }
 
-// تابع برای ایجاد صفحه‌بندی
-function createPagination() {
-  const pagination = document.getElementById("pagination");
-  if (!pagination) return;
+function updatePageInfo(totalProducts) {
+  const startItem = document.getElementById("startItem");
+  const endItem = document.getElementById("endItem");
+  const totalItems = document.getElementById("totalItems");
 
-  const totalPages = Math.ceil(productsData.length / productsPerPage);
-
-  pagination.innerHTML = "";
-
-  // دکمه قبلی
-  if (currentPage > 1) {
-    pagination.innerHTML += `
-            <button onclick="changePage(${
-              currentPage - 1
-            })" class="w-10 h-10 border border-gray-300 rounded-lg flex items-center justify-center hover:border-primary transition-colors">
-                <i data-feather="chevron-right" class="w-4 h-4"></i>
-            </button>
-        `;
-  }
-
-  // صفحات
-  for (let i = 1; i <= totalPages; i++) {
-    if (i === currentPage) {
-      pagination.innerHTML += `
-                <button class="w-10 h-10 bg-primary text-white rounded-lg">${i}</button>
-            `;
-    } else {
-      pagination.innerHTML += `
-                <button onclick="changePage(${i})" class="w-10 h-10 border border-gray-300 rounded-lg hover:border-primary transition-colors">${i}</button>
-            `;
-    }
-  }
-
-  // دکمه بعدی
-  if (currentPage < totalPages) {
-    pagination.innerHTML += `
-            <button onclick="changePage(${
-              currentPage + 1
-            })" class="w-10 h-10 border border-gray-300 rounded-lg flex items-center justify-center hover:border-primary transition-colors">
-                <i data-feather="chevron-left" class="w-4 h-4"></i>
-            </button>
-        `;
-  }
-
-  feather.replace();
+  if (startItem) startItem.textContent = "1";
+  if (endItem) endItem.textContent = totalProducts.toString();
+  if (totalItems) totalItems.textContent = totalProducts.toString();
 }
 
-// تابع تغییر صفحه
-function changePage(page) {
-  currentPage = page;
-  const startIndex = (page - 1) * productsPerPage;
-  const endIndex = startIndex + productsPerPage;
-  const productsToShow = productsData.slice(startIndex, endIndex);
-
-  displayProducts(productsToShow);
-  createPagination();
-
-  // اسکرول به بالا
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
-// فیلتر کردن محصولات
-function filterProducts(category) {
-  currentFilter = category;
-  currentPage = 1;
-
-  let filteredProducts = productsData;
-
-  if (category !== "all") {
-    filteredProducts = productsData.filter(
-      (product) => product.category === category
-    );
-  }
-
-  // آپدیت دکمه‌های فیلتر
-  document.querySelectorAll(".filter-btn").forEach((btn) => {
-    if (btn.getAttribute("data-category") === category) {
-      btn.classList.add("active", "bg-primary", "text-white");
-      btn.classList.remove("bg-white", "border", "text-gray-700");
-    } else {
-      btn.classList.remove("active", "bg-primary", "text-white");
-      btn.classList.add("bg-white", "border", "text-gray-700");
-    }
-  });
-
-  displayProducts(filteredProducts);
-  createPagination();
-}
-
-// مدیریت رویدادها
 function setupEventListeners() {
   // فیلتر دسته‌بندی
-  document.querySelectorAll(".filter-btn").forEach((btn) => {
-    btn.addEventListener("click", function () {
-      const category = this.getAttribute("data-category");
-      filterProducts(category);
-    });
-  });
-
-  // فیلتر از سایدبار
-  document.querySelectorAll(".category-filter").forEach((link) => {
-    link.addEventListener("click", function (e) {
+  const categoryFilters = document.querySelectorAll(".category-filter");
+  categoryFilters.forEach((filter) => {
+    filter.addEventListener("click", function (e) {
       e.preventDefault();
       const category = this.getAttribute("data-category");
-      filterProducts(category);
+      // اینجا می‌تونی فیلتر کردن محصولات رو اضافه کنی
+      console.log("Filter by category:", category);
     });
   });
 
-  // افزودن به سبد خرید
-  document.addEventListener("click", function (e) {
-    if (e.target.closest(".add-to-cart-btn")) {
-      const button = e.target.closest(".add-to-cart-btn");
-      const productId = button.getAttribute("data-product-id");
-      addToCart(productId);
-    }
-  });
-
-  // علاقه‌مندی‌ها
-  document.addEventListener("click", function (e) {
-    if (e.target.closest(".favorite-btn")) {
-      const button = e.target.closest(".favorite-btn");
-      const productId = button.getAttribute("data-product-id");
-      toggleFavorite(productId, button);
-    }
-  });
-}
-
-// افزودن به سبد خرید
-function addToCart(productId) {
-  const product = productsData.find((p) => p._id === productId);
-  if (product) {
-    // نمایش پیام موفقیت
-    showToast(`"${product.name}" به سبد خرید اضافه شد`, "success");
-
-    // اینجا می‌تونی به localStorage اضافه کنی
-    console.log("افزودن به سبد خرید:", product);
+  // feather icons
+  if (typeof feather !== "undefined") {
+    feather.replace();
   }
 }
-
-// مدیریت علاقه‌مندی‌ها
-function toggleFavorite(productId, button) {
-  const product = productsData.find((p) => p._id === productId);
-  const icon = button.querySelector("i");
-
-  if (icon.classList.contains("text-red-500")) {
-    icon.classList.remove("text-red-500", "fill-current");
-    showToast(`"${product.name}" از علاقه‌مندی‌ها حذف شد`, "info");
-  } else {
-    icon.classList.add("text-red-500", "fill-current");
-    showToast(`"${product.name}" به علاقه‌مندی‌ها اضافه شد`, "success");
-  }
-
-  feather.replace();
-}
-
-// نمایش نوتیفیکیشن
-function showToast(message, type = "info") {
-  // ایجاد یک toast ساده
-  const toast = document.createElement("div");
-  toast.className = `fixed top-4 right-4 z-50 px-6 py-3 rounded-lg shadow-lg text-white ${
-    type === "success"
-      ? "bg-green-500"
-      : type === "error"
-      ? "bg-red-500"
-      : "bg-blue-500"
-  }`;
-  toast.textContent = message;
-
-  document.body.appendChild(toast);
-
-  // حذف اتوماتیک بعد از 3 ثانیه
-  setTimeout(() => {
-    toast.remove();
-  }, 3000);
-}
-
-// رویداد اصلی وقتی صفحه لود شد
-document.addEventListener("DOMContentLoaded", async function () {
-  console.log("🏋️‍♂️ شروع بارگذاری AmirShop...");
-
-  // بارگذاری محصولات از بک‌اند
-  await loadProductsFromBackend();
-
-  // نمایش محصولات
-  displayProducts();
-  createPagination();
-
-  // تنظیم رویدادها
-  setupEventListeners();
-
-  console.log("✅ AmirShop آماده است!");
-});

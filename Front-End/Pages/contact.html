@@ -5,20 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>تماس با ما - AmirShop</title>
 
-    <!-- فونت شبنم -->
     <link
       href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css"
       rel="stylesheet"
     />
 
     <script src="https://cdn.tailwindcss.com"></script>
-
-    
-    <script src="https://unpkg.com/feather-icons"></script>
-
-  
-    <link rel="stylesheet" href="/css/styles/contact.css" />
-
     <script>
       tailwind.config = {
         theme: {
@@ -35,46 +27,117 @@
         },
       };
     </script>
+
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <style>
+      body {
+        font-family: "Shabnam", "Tahoma", "Arial", sans-serif;
+      }
+
+      .contact-gradient {
+        background: linear-gradient(
+          135deg,
+          #ff6b35 0%,
+          #ff8c5a 50%,
+          #004e89 100%
+        );
+      }
+
+      .contact-card {
+        transition: all 0.3s ease;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-input:focus {
+        box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+      }
+
+      .map-container {
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+    </style>
   </head>
   <body class="font-sans bg-gray-50">
-    <!-- هدر -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
+    <!-- نوار بالایی -->
+    <div class="bg-primary text-white py-2 px-4 text-sm">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center space-x-4 space-x-reverse">
+          <span class="flex items-center">
+            <i data-feather="phone" class="w-4 h-4 ml-1"></i>
+            ۰۲۱-۱۲۳۴۵۶۷۸
+          </span>
+          <span class="flex items-center">
+            <i data-feather="mail" class="w-4 h-4 ml-1"></i>
+            info@amirshop.ir
+          </span>
+        </div>
+        <div class="flex items-center space-x-4 space-x-reverse">
+          <a href="/profile/index.html" class="hover:text-gray-200"
+            >حساب کاربری</a
+          >
+          <a href="tracking.html" class="hover:text-gray-200">پیگیری سفارش</a>
+          <a href="support.html" class="hover:text-gray-200">پشتیبانی</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- هدر اصلی -->
+    <header class="bg-white shadow-sm sticky top-0 z-40">
       <div class="container mx-auto px-4 py-4">
-        <div class="flex items-center justify-between">
-          <a
-            href="index.html"
-            class="text-2xl font-bold text-primary hover:opacity-80 transition"
+        <div class="flex flex-col md:flex-row items-center justify-between">
+          <!-- لوگو و منو -->
+          <div
+            class="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0"
           >
-            AmirShop</a
-          >
-          <nav class="hidden md:flex space-x-8 space-x-reverse">
             <a
               href="index.html"
-              class="text-gray-700 hover:text-primary transition"
+              class="text-2xl font-bold text-primary hover:opacity-80 transition"
+            >
+              AmirShop
+            </a>
+            <button class="md:hidden" id="menuToggle">
+              <i data-feather="menu" class="w-6 h-6"></i>
+            </button>
+          </div>
+
+          <!-- منوی ناوبری -->
+          <nav class="hidden md:flex space-x-8 space-x-reverse" id="mainNav">
+            <a
+              href="index.html"
+              class="font-medium text-gray-700 hover:text-primary transition"
               >خانه</a
             >
             <a
               href="products.html"
-              class="text-gray-700 hover:text-primary transition"
+              class="font-medium text-gray-700 hover:text-primary transition"
               >محصولات</a
             >
             <a
               href="blog.html"
-              class="text-gray-700 hover:text-primary transition"
+              class="font-medium text-gray-700 hover:text-primary transition"
               >مقالات</a
             >
             <a
               href="about.html"
-              class="text-gray-700 hover:text-primary transition"
+              class="font-medium text-gray-700 hover:text-primary transition"
               >درباره ما</a
             >
             <a
               href="contact.html"
-              class="text-primary font-bold border-b-2 border-primary"
+              class="font-medium text-primary hover:text-orange-600 transition border-b-2 border-primary"
               >تماس با ما</a
             >
           </nav>
-                    <div class="flex items-center space-x-4 space-x-reverse mt-4 md:mt-0">
+
+          <!-- ابزارهای کاربر -->
+          <div class="flex items-center space-x-4 space-x-reverse mt-4 md:mt-0">
             <!-- جستجو -->
             <div class="relative hidden md:block">
               <input
@@ -107,350 +170,460 @@
                 ></i>
               </a>
             </div>
+          </div>
         </div>
       </div>
     </header>
 
-    <!-- محتوای اصلی -->
-    <main>
-      <!-- هیرو -->
-      <section class="contact-hero text-white py-20">
-        <div class="container mx-auto px-4 text-center">
-          <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in-up">
-            در تماس باشید
-          </h1>
-          <p
-            class="text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed opacity-90 animate-fade-in-up animation-delay-100"
-          >
-            ما اینجا هستیم تا به سوالات شما پاسخ دهیم و در مسیر سلامتی و تناسب
-            اندام همراهتان باشیم
+    <!-- بخش هیرو -->
+    <section class="contact-gradient text-white py-16 md:py-20">
+      <div class="container mx-auto px-4">
+        <div class="text-center max-w-3xl mx-auto">
+          <h1 class="text-4xl md:text-5xl font-bold mb-6">تماس با ما</h1>
+          <p class="text-xl md:text-2xl opacity-90 leading-relaxed">
+            ما اینجا هستیم تا به سوالات شما پاسخ دهیم و بهترین خدمات را ارائه
+            کنیم
           </p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- اطلاعات تماس -->
-      <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-          <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
-          >
-            <!-- تلفن -->
-            <div class="contact-info-card p-6 text-center animate-fade-in-up">
-              <div class="contact-icon text-4xl mb-4">📞</div>
-              <h3 class="text-xl font-bold text-gray-800 mb-3">تلفن تماس</h3>
-              <p class="text-gray-600 mb-2">پشتیبانی ۲۴ ساعته</p>
-              <a
-                href="tel:+982112345678"
-                class="text-primary font-bold text-lg hover:text-orange-600 transition"
-              >
-                ۰۲۱-۱۲۳۴۵۶۷۸
-              </a>
-            </div>
-
-            <!-- ایمیل -->
-            <div
-              class="contact-info-card p-6 text-center animate-fade-in-up animation-delay-100"
-            >
-              <div class="contact-icon text-4xl mb-4">📧</div>
-              <h3 class="text-xl font-bold text-gray-800 mb-3">ایمیل</h3>
-              <p class="text-gray-600 mb-2">پاسخگویی در ۲۴ ساعت</p>
-              <a
-                href="mailto:info@amirshop.ir"
-                class="text-primary font-bold text-lg hover:text-orange-600 transition"
-              >
-                info@amirshop.ir
-              </a>
-            </div>
-
-            <!-- آدرس -->
-            <div
-              class="contact-info-card p-6 text-center animate-fade-in-up animation-delay-200"
-            >
-              <div class="contact-icon text-4xl mb-4">📍</div>
-              <h3 class="text-xl font-bold text-gray-800 mb-3">آدرس</h3>
-              <p class="text-gray-600">
-                تهران، خیابان ولیعصر<br />
-                پلاک ۱۲۳۴، طبقه دوم
+    <!-- بخش اصلی تماس -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- فرم تماس -->
+          <div class="lg:col-span-2">
+            <div class="bg-white rounded-2xl shadow-lg p-8 contact-card">
+              <h2 class="text-3xl font-bold text-gray-800 mb-6">پیام به ما</h2>
+              <p class="text-gray-600 mb-8">
+                برای ارتباط با ما، فرم زیر را پر کنید. ما در اسرع وقت پاسخگوی
+                شما خواهیم بود.
               </p>
-            </div>
 
-            <!-- ساعات کاری -->
-            <div
-              class="contact-info-card p-6 text-center animate-fade-in-up animation-delay-300"
-            >
-              <div class="contact-icon text-4xl mb-4">🕒</div>
-              <h3 class="text-xl font-bold text-gray-800 mb-3">ساعات کاری</h3>
-              <p class="text-gray-600">
-                شنبه تا چهارشنبه: ۸-۲۲<br />
-                پنجشنبه: ۸-۱۸
-              </p>
-            </div>
-          </div>
-
-          <!-- فرم و نقشه -->
-          <div class="grid lg:grid-cols-2 gap-12 items-start">
-            <!-- فرم تماس -->
-            <div class="animate-fade-in-left">
-              <div class="contact-form-card p-8">
-                <h2 class="text-3xl font-bold text-gray-800 mb-2">
-                  پیام به ما
-                </h2>
-                <p class="text-gray-600 mb-8">
-                  سوالات، پیشنهادات و انتقادات خود را با ما در میان بگذارید
-                </p>
-
-                <form id="contactForm" class="space-y-6">
-                  <div class="form-group">
+              <form class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label
+                      for="name"
+                      class="block text-gray-700 font-medium mb-2"
+                      >نام و نام خانوادگی</label
+                    >
                     <input
                       type="text"
                       id="name"
-                      class="form-input"
-                      placeholder=" "
-                      required
+                      class="w-full border border-gray-300 rounded-xl py-3 px-4 form-input focus:outline-none focus:border-primary transition"
+                      placeholder="نام خود را وارد کنید"
                     />
-                    <label for="name" class="form-label">نام کامل</label>
                   </div>
-
-                  <div class="form-group">
+                  <div>
+                    <label
+                      for="email"
+                      class="block text-gray-700 font-medium mb-2"
+                      >ایمیل</label
+                    >
                     <input
                       type="email"
                       id="email"
-                      class="form-input"
-                      placeholder=" "
-                      required
+                      class="w-full border border-gray-300 rounded-xl py-3 px-4 form-input focus:outline-none focus:border-primary transition"
+                      placeholder="example@email.com"
                     />
-                    <label for="email" class="form-label">ایمیل</label>
                   </div>
+                </div>
 
-                  <div class="form-group">
-                    <input
-                      type="tel"
-                      id="phone"
-                      class="form-input"
-                      placeholder=" "
-                    />
-                    <label for="phone" class="form-label"
-                      >شماره تماس (اختیاری)</label
-                    >
-                  </div>
-
-                  <div class="form-group">
-                    <select id="subject" class="form-input" required>
-                      <option value="">انتخاب موضوع</option>
-                      <option value="product">سوال درباره محصول</option>
-                      <option value="consultation">مشاوره رایگان</option>
-                      <option value="order">پیگیری سفارش</option>
-                      <option value="complaint">انتقادات و پیشنهادات</option>
-                      <option value="other">سایر</option>
-                    </select>
-                    <label for="subject" class="form-label">موضوع</label>
-                  </div>
-
-                  <div class="form-group">
-                    <textarea
-                      id="message"
-                      class="form-input form-textarea"
-                      placeholder=" "
-                      required
-                    ></textarea>
-                    <label for="message" class="form-label">متن پیام</label>
-                  </div>
-
-                  <button type="submit" class="submit-btn w-full">
-                    <span>ارسال پیام</span>
-                  </button>
-                </form>
-              </div>
-            </div>
-
-            <!-- نقشه و اطلاعات -->
-            <div class="animate-fade-in-right">
-              <div class="space-y-8">
-                <!-- نقشه -->
-                <div class="map-container h-80 bg-gray-200 relative">
-                  <div class="map-overlay"></div>
-                  <!-- می‌تونی از Google Maps Embed API استفاده کنی -->
-                  <div
-                    class="w-full h-full flex items-center justify-center text-gray-500"
+                <div>
+                  <label
+                    for="subject"
+                    class="block text-gray-700 font-medium mb-2"
+                    >موضوع</label
                   >
-                    <div class="text-center">
-                      <div class="text-6xl mb-4">🗺️</div>
-                      <p>نقشه گوگل</p>
-                      <p class="text-sm mt-2">تهران، خیابان ولیعصر</p>
-                    </div>
-                  </div>
+                  <input
+                    type="text"
+                    id="subject"
+                    class="w-full border border-gray-300 rounded-xl py-3 px-4 form-input focus:outline-none focus:border-primary transition"
+                    placeholder="موضوع پیام"
+                  />
                 </div>
 
-                <!-- اطلاعات بیشتر -->
-                <div
-                  class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100"
+                <div>
+                  <label
+                    for="message"
+                    class="block text-gray-700 font-medium mb-2"
+                    >پیام شما</label
+                  >
+                  <textarea
+                    id="message"
+                    rows="6"
+                    class="w-full border border-gray-300 rounded-xl py-3 px-4 form-input focus:outline-none focus:border-primary transition"
+                    placeholder="متن پیام خود را اینجا بنویسید..."
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  class="w-full bg-primary hover:bg-orange-600 text-white py-4 rounded-xl font-bold text-lg transition duration-300 shadow-lg flex items-center justify-center group"
                 >
-                  <h3 class="text-xl font-bold text-gray-800 mb-4">
-                    دسترسی آسان
-                  </h3>
-                  <div class="space-y-3 text-gray-600">
-                    <div class="flex items-center">
-                      <i
-                        data-feather="map-pin"
-                        class="w-5 h-5 text-primary ml-3"
-                      ></i>
-                      <span>ایستگاه مترو ولیعصر - ۵ دقیقه پیاده‌روی</span>
-                    </div>
-                    <div class="flex items-center">
-                      <i
-                        data-feather="truck"
-                        class="w-5 h-5 text-primary ml-3"
-                      ></i>
-                      <span>پارکینگ اختصاصی برای مشتریان</span>
-                    </div>
-                    <div class="flex items-center">
-                      <i
-                        data-feather="clock"
-                        class="w-5 h-5 text-primary ml-3"
-                      ></i>
-                      <span>امکان دریافت مشاوره حضوری با هماهنگی قبلی</span>
-                    </div>
+                  ارسال پیام
+                  <i
+                    data-feather="send"
+                    class="w-5 h-5 mr-2 group-hover:transform group-hover:-translate-x-1 transition"
+                  ></i>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- اطلاعات تماس -->
+          <div class="space-y-8">
+            <!-- کارت اطلاعات -->
+            <div class="bg-white rounded-2xl shadow-lg p-6 contact-card">
+              <h3 class="text-2xl font-bold text-gray-800 mb-6">
+                اطلاعات تماس
+              </h3>
+
+              <div class="space-y-6">
+                <div class="flex items-start">
+                  <div class="bg-primary/10 rounded-xl p-3 ml-4">
+                    <i data-feather="map-pin" class="w-6 h-6 text-primary"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-gray-800 mb-1">آدرس فروشگاه</h4>
+                    <p class="text-gray-600">
+                      تهران، خیابان ولیعصر، پلاک ۱۲۳۴، طبقه دوم
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div class="bg-primary/10 rounded-xl p-3 ml-4">
+                    <i data-feather="phone" class="w-6 h-6 text-primary"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-gray-800 mb-1">تلفن تماس</h4>
+                    <p class="text-gray-600">۰۲۱-۱۲۳۴۵۶۷۸</p>
+                    <p class="text-gray-600">۰۹۱۲-۱۲۳-۴۵۶۷</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div class="bg-primary/10 rounded-xl p-3 ml-4">
+                    <i data-feather="mail" class="w-6 h-6 text-primary"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-gray-800 mb-1">ایمیل</h4>
+                    <p class="text-gray-600">info@amirshop.ir</p>
+                    <p class="text-gray-600">support@amirshop.ir</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div class="bg-primary/10 rounded-xl p-3 ml-4">
+                    <i data-feather="clock" class="w-6 h-6 text-primary"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-gray-800 mb-1">ساعات کاری</h4>
+                    <p class="text-gray-600">
+                      شنبه تا چهارشنبه: ۹ صبح تا ۶ عصر
+                    </p>
+                    <p class="text-gray-600">پنجشنبه: ۹ صبح تا ۲ بعدازظهر</p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <!-- سوالات متداول -->
-      <section class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-          <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-              سوالات متداول
-            </h2>
-            <p class="text-xl text-gray-600">پاسخ سوالات پرتکرار شما</p>
-          </div>
-
-          <div class="max-w-4xl mx-auto">
-            <!-- FAQ 1 -->
-            <div class="faq-item">
-              <div class="faq-question">
-                <span>چگونه از اصالت محصولات مطمئن شوم؟</span>
-                <i
-                  data-feather="chevron-down"
-                  class="faq-icon w-5 h-5 text-primary"
-                ></i>
+            <!-- کارت پشتیبانی فوری -->
+            <div
+              class="bg-gradient-to-br from-primary to-orange-500 rounded-2xl p-6 text-white contact-card"
+            >
+              <div class="flex items-center mb-4">
+                <div class="bg-white/20 rounded-xl p-3 ml-4">
+                  <i data-feather="message-circle" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-xl font-bold">پشتیبانی فوری</h3>
               </div>
-              <div class="faq-answer">
-                تمام محصولات ما دارای گارانتی اصالت هستند و مستقیماً از
-                نمایندگان رسمی برندها تهیه می‌شوند. شما می‌توانید با اسکن QR
-                Code روی محصولات از اصالت آن‌ها اطمینان حاصل کنید.
-              </div>
-            </div>
-
-            <!-- FAQ 2 -->
-            <div class="faq-item">
-              <div class="faq-question">
-                <span>مدت زمان ارسال سفارشات چقدر است؟</span>
-                <i
-                  data-feather="chevron-down"
-                  class="faq-icon w-5 h-5 text-primary"
-                ></i>
-              </div>
-              <div class="faq-answer">
-                سفارشات تهران: همان روز (برای سفارشات قبل از ۱۶) <br />
-                سفارشات شهرستان: ۲۴ تا ۴۸ ساعت کاری <br />
-                سفارشات ویژه: با هماهنگی قبلی
-              </div>
-            </div>
-
-            <!-- FAQ 3 -->
-            <div class="faq-item">
-              <div class="faq-question">
-                <span>آیا مشاوره رایگان ارائه می‌دهید؟</span>
-                <i
-                  data-feather="chevron-down"
-                  class="faq-icon w-5 h-5 text-primary"
-                ></i>
-              </div>
-              <div class="faq-answer">
-                بله! تیم متخصصان ما آماده ارائه مشاوره رایگان در زمینه‌های
-                تمرین، تغذیه و مکمل‌ها هستند. می‌توانید از طریق تماس تلفنی یا
-                مراجعه حضوری از این خدمات استفاده کنید.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CTA -->
-      <section class="contact-cta text-white py-20">
-        <div class="container mx-auto px-4 text-center">
-          <div class="cta-card p-8 max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">
-              هنوز سوالی دارید؟
-            </h2>
-            <p class="text-xl mb-8 opacity-90">
-              تیم پشتیبانی ما ۲۴/۷ آماده پاسخگویی به سوالات شماست
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <p class="mb-6 opacity-90">
+                برای پاسخ سریع به سوالات فوری، از طریق واتساپ با ما در ارتباط
+                باشید.
+              </p>
               <a
-                href="tel:+982112345678"
-                class="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-xl font-bold text-lg transition shadow-lg flex items-center justify-center"
+                href="https://wa.me/989121234567"
+                target="_blank"
+                class="w-full bg-white text-primary hover:bg-gray-100 py-3 rounded-xl font-bold transition duration-300 flex items-center justify-center"
               >
-                <i data-feather="phone" class="w-5 h-5 ml-2"></i>
-                تماس تلفنی
-              </a>
-              <a
-                href="https://wa.me/989123456789"
-                class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition shadow-lg flex items-center justify-center"
-              >
-                <i data-feather="message-circle" class="w-5 h-5 ml-2"></i>
-                واتس‌اپ
+                ارتباط از طریق واتساپ
+                <i data-feather="external-link" class="w-5 h-5 mr-2"></i>
               </a>
             </div>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
+
+    <!-- نقشه و اطلاعات بیشتر -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <!-- نقشه -->
+          <div>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">
+              موقعیت ما روی نقشه
+            </h2>
+            <div
+              class="map-container h-96 bg-gray-200 rounded-2xl overflow-hidden"
+            >
+              <!-- اینجا می‌توانید نقشه گوگل یا هر سرویس نقشه دیگری قرار دهید -->
+              <div
+                class="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-300 to-gray-400"
+              >
+                <div class="text-center text-gray-600">
+                  <i data-feather="map" class="w-16 h-16 mx-auto mb-4"></i>
+                  <p class="text-lg font-medium">نقشه موقعیت فروشگاه</p>
+                  <p class="text-sm mt-2">
+                    (در این بخش نقشه گوگل قرار می‌گیرد)
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- سوالات متداول -->
+          <div>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">سوالات متداول</h2>
+            <div class="space-y-4">
+              <div
+                class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100"
+              >
+                <h3 class="font-bold text-gray-800 mb-2 flex items-center">
+                  <i
+                    data-feather="help-circle"
+                    class="w-5 h-5 text-primary ml-2"
+                  ></i>
+                  چگونه می‌توانم از اصالت محصولات اطمینان حاصل کنم؟
+                </h3>
+                <p class="text-gray-600">
+                  تمام محصولات ما دارای گارانتی اصالت کالا بوده و مستقیماً از
+                  نمایندگی‌های معتبر تهیه می‌شوند.
+                </p>
+              </div>
+
+              <div
+                class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100"
+              >
+                <h3 class="font-bold text-gray-800 mb-2 flex items-center">
+                  <i
+                    data-feather="help-circle"
+                    class="w-5 h-5 text-primary ml-2"
+                  ></i>
+                  شرایط بازگرداندن کالا چگونه است؟
+                </h3>
+                <p class="text-gray-600">
+                  در صورت عدم رضایت از محصول تا ۷ روز امکان بازگرداندن کالا با
+                  ارائه فاکتور خرید وجود دارد.
+                </p>
+              </div>
+
+              <div
+                class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100"
+              >
+                <h3 class="font-bold text-gray-800 mb-2 flex items-center">
+                  <i
+                    data-feather="help-circle"
+                    class="w-5 h-5 text-primary ml-2"
+                  ></i>
+                  آیا امکان مشاوره تخصصی وجود دارد؟
+                </h3>
+                <p class="text-gray-600">
+                  بله، تیم مشاوره ما متشکل از متخصصین تغذیه ورزشی آماده ارائه
+                  راهنمایی رایگان به شما هستند.
+                </p>
+              </div>
+
+              <a
+                href="faq.html"
+                class="inline-flex items-center text-primary font-bold hover:text-orange-600 transition mt-4"
+              >
+                مشاهده همه سوالات متداول
+                <i data-feather="arrow-left" class="w-5 h-5 mr-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- فوتر -->
-    <footer class="bg-gray-800 text-white py-8">
-      <div class="container mx-auto px-4 text-center">
-        <p>© ۱۴۰۲ - کلیه حقوق برای AmirShop محفوظ است</p>
+    <footer class="bg-gray-800 text-white pt-12 pb-8">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <!-- درباره ما -->
+          <div>
+            <h3 class="text-2xl font-bold mb-6 text-primary">AmirShop</h3>
+            <p class="text-gray-300 leading-relaxed mb-6">
+              فروشگاه تخصصی مکمل‌های ورزشی با تضمین اصالت کالا و مناسب‌ترین
+              قیمت‌ها. ما بهترین برندهای جهانی را با گارانتی اصل بودن ارائه
+              می‌دهیم.
+            </p>
+            <div class="flex space-x-4 space-x-reverse">
+              <a
+                href="#"
+                class="bg-primary hover:bg-orange-600 w-10 h-10 rounded-full flex items-center justify-center transition duration-300"
+              >
+                <i data-feather="instagram" class="w-5 h-5"></i>
+              </a>
+              <a
+                href="#"
+                class="bg-primary hover:bg-orange-600 w-10 h-10 rounded-full flex items-center justify-center transition duration-300"
+              >
+                <i data-feather="telegram" class="w-5 h-5"></i>
+              </a>
+              <a
+                href="#"
+                class="bg-primary hover:bg-orange-600 w-10 h-10 rounded-full flex items-center justify-center transition duration-300"
+              >
+                <i data-feather="twitter" class="w-5 h-5"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- دسترسی سریع -->
+          <div>
+            <h4 class="text-xl font-bold mb-6">دسترسی سریع</h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="index.html"
+                  class="text-gray-300 hover:text-primary transition"
+                  >خانه</a
+                >
+              </li>
+              <li>
+                <a
+                  href="products.html"
+                  class="text-gray-300 hover:text-primary transition"
+                  >محصولات</a
+                >
+              </li>
+              <li>
+                <a
+                  href="blog.html"
+                  class="text-gray-300 hover:text-primary transition"
+                  >مقالات</a
+                >
+              </li>
+              <li>
+                <a
+                  href="about.html"
+                  class="text-gray-300 hover:text-primary transition"
+                  >درباره ما</a
+                >
+              </li>
+              <li>
+                <a
+                  href="contact.html"
+                  class="text-gray-300 hover:text-primary transition"
+                  >تماس با ما</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- خدمات مشتریان -->
+          <div>
+            <h4 class="text-xl font-bold mb-6">خدمات مشتریان</h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="tracking.html"
+                  class="text-gray-300 hover:text-primary transition"
+                  >پیگیری سفارش</a
+                >
+              </li>
+              <li>
+                <a
+                  href="return-policy.html"
+                  class="text-gray-300 hover:text-primary transition"
+                  >شرایط بازگرداندن</a
+                >
+              </li>
+              <li>
+                <a
+                  href="faq.html"
+                  class="text-gray-300 hover:text-primary transition"
+                  >سوالات متداول</a
+                >
+              </li>
+              <li>
+                <a
+                  href="support.html"
+                  class="text-gray-300 hover:text-primary transition"
+                  >پشتیبانی</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- اطلاعات تماس -->
+          <div>
+            <h4 class="text-xl font-bold mb-6">اطلاعات تماس</h4>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <i
+                  data-feather="map-pin"
+                  class="w-5 h-5 text-primary mt-1 ml-2"
+                ></i>
+                <div>
+                  <p class="text-gray-300">تهران، خیابان ولیعصر، پلاک ۱۲۳۴</p>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <i data-feather="phone" class="w-5 h-5 text-primary ml-2"></i>
+                <a
+                  href="tel:+982112345678"
+                  class="text-gray-300 hover:text-primary transition"
+                  >۰۲۱-۱۲۳۴۵۶۷۸</a
+                >
+              </div>
+              <div class="flex items-center">
+                <i data-feather="mail" class="w-5 h-5 text-primary ml-2"></i>
+                <a
+                  href="mailto:info@amirshop.ir"
+                  class="text-gray-300 hover:text-primary transition"
+                  >info@amirshop.ir</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- خط جداکننده -->
+        <div class="border-t border-gray-700 pt-8 text-center">
+          <p class="text-gray-400">
+            © 1404 - کلیه حقوق برای AmirShop محفوظ است.
+          </p>
+        </div>
       </div>
     </footer>
 
+    <!-- اسکریپت‌ها -->
     <script>
       // مقداردهی اولیه Feather Icons
       feather.replace();
 
-      // مدیریت FAQ
-      document.querySelectorAll(".faq-question").forEach((question) => {
-        question.addEventListener("click", () => {
-          const faqItem = question.parentElement;
-          faqItem.classList.toggle("active");
-        });
-      });
-
-      // مدیریت فرم
+      // منوی موبایل
       document
-        .getElementById("contactForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          // شبیه‌سازی ارسال فرم
-          const submitBtn = this.querySelector('button[type="submit"]');
-          const originalText = submitBtn.innerHTML;
-
-          submitBtn.innerHTML = '<div class="loading-spinner"></div>';
-          submitBtn.disabled = true;
-
-          setTimeout(() => {
-            submitBtn.innerHTML = "<span>✅ پیام ارسال شد!</span>";
-            setTimeout(() => {
-              submitBtn.innerHTML = originalText;
-              submitBtn.disabled = false;
-              this.reset();
-            }, 2000);
-          }, 1500);
+        .getElementById("menuToggle")
+        ?.addEventListener("click", function () {
+          const nav = document.getElementById("mainNav");
+          nav.classList.toggle("hidden");
+          nav.classList.toggle("flex");
+          nav.classList.toggle("flex-col");
+          nav.classList.toggle("absolute");
+          nav.classList.toggle("bg-white");
+          nav.classList.toggle("w-full");
+          nav.classList.toggle("top-20");
+          nav.classList.toggle("left-0");
+          nav.classList.toggle("p-4");
+          nav.classList.toggle("shadow-lg");
         });
     </script>
   </body>
