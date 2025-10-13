@@ -1,0 +1,11 @@
+{
+  "name": "amirshop",
+  "version": "1.0.0",
+  "description": "Static website for AmirShop",
+  "scripts": {
+    "build": "echo 'Building static site'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
