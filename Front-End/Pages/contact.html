@@ -16,9 +16,9 @@
         theme: {
           extend: {
             colors: {
-              primary: "#FF6B35",
-              secondary: "#004E89",
-              accent: "#2D7D46",
+              primary: "#234C6A",
+              secondary: "#456882",
+              accent: "#D2C1B6",
             },
             fontFamily: {
               sans: ["Shabnam", "Tahoma", "Arial", "sans-serif"],
@@ -38,35 +38,61 @@
       .contact-gradient {
         background: linear-gradient(
           135deg,
-          #ff6b35 0%,
-          #ff8c5a 50%,
-          #004e89 100%
+          #234c6a 0%,
+          #456882 50%,
+          #2a4365 100%
         );
       }
 
       .contact-card {
         transition: all 0.3s ease;
+        border: 1px solid #e2e8f0;
       }
 
       .contact-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 15px 30px rgba(35, 76, 106, 0.1);
+        border-color: #d2c1b6;
       }
 
       .form-input:focus {
-        box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+        box-shadow: 0 0 0 3px rgba(35, 76, 106, 0.2);
+        border-color: #234c6a;
       }
 
       .map-container {
         border-radius: 20px;
         overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 30px rgba(35, 76, 106, 0.1);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #234c6a, #456882);
+        color: white;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background: linear-gradient(135deg, #1a3d58, #385a72);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(35, 76, 106, 0.3);
+      }
+
+      .btn-accent {
+        background: #d2c1b6;
+        color: #234c6a;
+        transition: all 0.3s ease;
+      }
+
+      .btn-accent:hover {
+        background: #c4b0a3;
+        transform: translateY(-2px);
       }
     </style>
   </head>
   <body class="font-sans bg-gray-50">
-    <!-- نوار بالایی -->
-    <div class="bg-primary text-white py-2 px-4 text-sm">
+    <!-- نوار بالایی - فقط در دسکتاپ -->
+    <div class="bg-primary text-white py-2 px-4 text-sm hidden md:block">
       <div class="container mx-auto flex justify-between items-center">
         <div class="flex items-center space-x-4 space-x-reverse">
           <span class="flex items-center">
@@ -79,11 +105,9 @@
           </span>
         </div>
         <div class="flex items-center space-x-4 space-x-reverse">
-          <a href="/profile/index.html" class="hover:text-gray-200"
-            >حساب کاربری</a
-          >
-          <a href="tracking.html" class="hover:text-gray-200">پیگیری سفارش</a>
-          <a href="support.html" class="hover:text-gray-200">پشتیبانی</a>
+          <a href="#" class="hover:text-accent transition">حساب کاربری</a>
+          <a href="#" class="hover:text-accent transition">پیگیری سفارش</a>
+          <a href="#" class="hover:text-accent transition">پشتیبانی</a>
         </div>
       </div>
     </div>
@@ -92,22 +116,25 @@
     <header class="bg-white shadow-sm sticky top-0 z-40">
       <div class="container mx-auto px-4 py-4">
         <div class="flex flex-col md:flex-row items-center justify-between">
-          <!-- لوگو و منو -->
-          <div
-            class="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0"
-          >
+          <!-- لوگو و منوی موبایل -->
+          <div class="flex items-center justify-between w-full md:w-auto">
             <a
               href="index.html"
               class="text-2xl font-bold text-primary hover:opacity-80 transition"
             >
               AmirShop
             </a>
-            <button class="md:hidden" id="menuToggle">
-              <i data-feather="menu" class="w-6 h-6"></i>
+
+            <!-- دکمه منوی همبرگری برای موبایل -->
+            <button
+              class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition"
+              id="mobileMenuToggle"
+            >
+              <i data-feather="menu" class="w-6 h-6 text-gray-700"></i>
             </button>
           </div>
 
-          <!-- منوی ناوبری -->
+          <!-- منوی ناوبری اصلی -->
           <nav class="hidden md:flex space-x-8 space-x-reverse" id="mainNav">
             <a
               href="index.html"
@@ -131,15 +158,17 @@
             >
             <a
               href="contact.html"
-              class="font-medium text-primary hover:text-orange-600 transition border-b-2 border-primary"
+              class="font-medium text-primary border-b-2 border-primary transition"
               >تماس با ما</a
             >
           </nav>
 
           <!-- ابزارهای کاربر -->
-          <div class="flex items-center space-x-4 space-x-reverse mt-4 md:mt-0">
+          <div
+            class="hidden md:flex items-center space-x-4 space-x-reverse mt-4 md:mt-0"
+          >
             <!-- جستجو -->
-            <div class="relative hidden md:block">
+            <div class="relative">
               <input
                 type="text"
                 placeholder="جستجوی محصولات..."
@@ -151,7 +180,6 @@
               ></i>
             </div>
 
-            <!-- سبد خرید و کاربر -->
             <div class="flex items-center space-x-3 space-x-reverse">
               <a href="cart.html" class="relative">
                 <i
@@ -163,12 +191,62 @@
                   >۳</span
                 >
               </a>
-              <a href="login.html" class="hidden md:block">
+              <a href="login.html">
                 <i
                   data-feather="user"
                   class="w-6 h-6 text-gray-700 hover:text-primary transition"
                 ></i>
               </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- منوی موبایل -->
+        <div
+          class="md:hidden hidden mt-4 pt-4 border-t border-gray-200"
+          id="mobileMenu"
+        >
+          <div class="flex flex-col space-y-4">
+            <a
+              href="index.html"
+              class="font-medium text-gray-700 hover:text-primary transition py-2"
+              >خانه</a
+            >
+            <a
+              href="products.html"
+              class="font-medium text-gray-700 hover:text-primary transition py-2"
+              >محصولات</a
+            >
+            <a
+              href="blog.html"
+              class="font-medium text-gray-700 hover:text-primary transition py-2"
+              >مقالات</a
+            >
+            <a
+              href="about.html"
+              class="font-medium text-gray-700 hover:text-primary transition py-2"
+              >درباره ما</a
+            >
+            <a
+              href="contact.html"
+              class="font-medium text-primary transition py-2"
+              >تماس با ما</a
+            >
+
+            <!-- اطلاعات تماس در منوی موبایل -->
+            <div class="pt-4 border-t border-gray-200">
+              <div
+                class="flex items-center space-x-2 space-x-reverse text-sm text-gray-600 mb-2"
+              >
+                <i data-feather="phone" class="w-4 h-4"></i>
+                <span>۰۲۱-۱۲۳۴۵۶۷۸</span>
+              </div>
+              <div
+                class="flex items-center space-x-2 space-x-reverse text-sm text-gray-600"
+              >
+                <i data-feather="mail" class="w-4 h-4"></i>
+                <span>info@amirshop.ir</span>
+              </div>
             </div>
           </div>
         </div>
@@ -194,7 +272,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <!-- فرم تماس -->
           <div class="lg:col-span-2">
-            <div class="bg-white rounded-2xl shadow-lg p-8 contact-card">
+            <div class="contact-card bg-white rounded-2xl p-8">
               <h2 class="text-3xl font-bold text-gray-800 mb-6">پیام به ما</h2>
               <p class="text-gray-600 mb-8">
                 برای ارتباط با ما، فرم زیر را پر کنید. ما در اسرع وقت پاسخگوی
@@ -261,7 +339,7 @@
 
                 <button
                   type="submit"
-                  class="w-full bg-primary hover:bg-orange-600 text-white py-4 rounded-xl font-bold text-lg transition duration-300 shadow-lg flex items-center justify-center group"
+                  class="btn-primary w-full py-4 rounded-xl font-bold text-lg transition flex items-center justify-center group"
                 >
                   ارسال پیام
                   <i
@@ -276,7 +354,7 @@
           <!-- اطلاعات تماس -->
           <div class="space-y-8">
             <!-- کارت اطلاعات -->
-            <div class="bg-white rounded-2xl shadow-lg p-6 contact-card">
+            <div class="contact-card bg-white rounded-2xl p-6">
               <h3 class="text-2xl font-bold text-gray-800 mb-6">
                 اطلاعات تماس
               </h3>
@@ -333,7 +411,7 @@
 
             <!-- کارت پشتیبانی فوری -->
             <div
-              class="bg-gradient-to-br from-primary to-orange-500 rounded-2xl p-6 text-white contact-card"
+              class="contact-card bg-gradient-to-br from-primary to-secondary rounded-2xl p-6 text-white"
             >
               <div class="flex items-center mb-4">
                 <div class="bg-white/20 rounded-xl p-3 ml-4">
@@ -348,7 +426,7 @@
               <a
                 href="https://wa.me/989121234567"
                 target="_blank"
-                class="w-full bg-white text-primary hover:bg-gray-100 py-3 rounded-xl font-bold transition duration-300 flex items-center justify-center"
+                class="btn-accent w-full py-3 rounded-xl font-bold transition flex items-center justify-center"
               >
                 ارتباط از طریق واتساپ
                 <i data-feather="external-link" class="w-5 h-5 mr-2"></i>
@@ -391,7 +469,7 @@
             <h2 class="text-3xl font-bold text-gray-800 mb-6">سوالات متداول</h2>
             <div class="space-y-4">
               <div
-                class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100"
+                class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 contact-card"
               >
                 <h3 class="font-bold text-gray-800 mb-2 flex items-center">
                   <i
@@ -407,7 +485,7 @@
               </div>
 
               <div
-                class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100"
+                class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 contact-card"
               >
                 <h3 class="font-bold text-gray-800 mb-2 flex items-center">
                   <i
@@ -423,7 +501,7 @@
               </div>
 
               <div
-                class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100"
+                class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 contact-card"
               >
                 <h3 class="font-bold text-gray-800 mb-2 flex items-center">
                   <i
@@ -440,7 +518,7 @@
 
               <a
                 href="faq.html"
-                class="inline-flex items-center text-primary font-bold hover:text-orange-600 transition mt-4"
+                class="inline-flex items-center text-primary font-bold hover:text-secondary transition mt-4"
               >
                 مشاهده همه سوالات متداول
                 <i data-feather="arrow-left" class="w-5 h-5 mr-1"></i>
@@ -606,25 +684,25 @@
 
     <!-- اسکریپت‌ها -->
     <script>
-      // مقداردهی اولیه Feather Icons
+      // مقداردهی feather icons
       feather.replace();
 
-      // منوی موبایل
-      document
-        .getElementById("menuToggle")
-        ?.addEventListener("click", function () {
-          const nav = document.getElementById("mainNav");
-          nav.classList.toggle("hidden");
-          nav.classList.toggle("flex");
-          nav.classList.toggle("flex-col");
-          nav.classList.toggle("absolute");
-          nav.classList.toggle("bg-white");
-          nav.classList.toggle("w-full");
-          nav.classList.toggle("top-20");
-          nav.classList.toggle("left-0");
-          nav.classList.toggle("p-4");
-          nav.classList.toggle("shadow-lg");
+      // مدیریت منوی موبایل
+      const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener("click", function () {
+          mobileMenu.classList.toggle("hidden");
+          // تغییر آیکون منو
+          const icon = mobileMenuToggle.querySelector("i");
+          if (mobileMenu.classList.contains("hidden")) {
+            feather.icons.menu.replaceFeather(icon);
+          } else {
+            feather.icons.x.replaceFeather(icon);
+          }
         });
+      }
     </script>
   </body>
 </html>

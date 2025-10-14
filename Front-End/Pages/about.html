@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>درباره ما - AmirShop</title>
@@ -16,9 +16,9 @@
         theme: {
           extend: {
             colors: {
-              primary: "#FF6B35",
-              secondary: "#004E89",
-              accent: "#2D7D46",
+              primary: "#234C6A",
+              secondary: "#456882",
+              accent: "#D2C1B6",
             },
             fontFamily: {
               sans: ["Shabnam", "Tahoma", "Arial", "sans-serif"],
@@ -38,48 +38,75 @@
       .about-gradient {
         background: linear-gradient(
           135deg,
-          #ff6b35 0%,
-          #ff8c5a 50%,
-          #004e89 100%
+          #234c6a 0%,
+          #456882 50%,
+          #2a4365 100%
         );
       }
 
       .team-card {
         transition: all 0.3s ease;
+        border: 1px solid #e2e8f0;
       }
 
       .team-card:hover {
         transform: translateY(-8px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 20px 40px rgba(35, 76, 106, 0.15);
+        border-color: #d2c1b6;
       }
 
       .mission-item {
         transition: all 0.3s ease;
+        border: 1px solid #e2e8f0;
       }
 
       .mission-item:hover {
         transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 15px 30px rgba(35, 76, 106, 0.1);
+        border-color: #d2c1b6;
       }
 
       .timeline-item::before {
-        content: '';
+        content: "";
         position: absolute;
         right: -20px;
         top: 0;
         width: 2px;
         height: 100%;
-        background: #FF6B35;
+        background: #234c6a;
       }
 
       .timeline-item:last-child::before {
         display: none;
       }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #234c6a, #456882);
+        color: white;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background: linear-gradient(135deg, #1a3d58, #385a72);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(35, 76, 106, 0.3);
+      }
+
+      .btn-accent {
+        background: #d2c1b6;
+        color: #234c6a;
+        transition: all 0.3s ease;
+      }
+
+      .btn-accent:hover {
+        background: #c4b0a3;
+        transform: translateY(-2px);
+      }
     </style>
-</head>
-<body class="font-sans bg-gray-50">
-    <!-- نوار بالایی -->
-    <div class="bg-primary text-white py-2 px-4 text-sm">
+  </head>
+  <body class="font-sans bg-gray-50">
+    <!-- نوار بالایی - فقط در دسکتاپ -->
+    <div class="bg-primary text-white py-2 px-4 text-sm hidden md:block">
       <div class="container mx-auto flex justify-between items-center">
         <div class="flex items-center space-x-4 space-x-reverse">
           <span class="flex items-center">
@@ -92,9 +119,9 @@
           </span>
         </div>
         <div class="flex items-center space-x-4 space-x-reverse">
-          <a href="/profile/index.html" class="hover:text-gray-200">حساب کاربری</a>
-          <a href="tracking.html" class="hover:text-gray-200">پیگیری سفارش</a>
-          <a href="support.html" class="hover:text-gray-200">پشتیبانی</a>
+          <a href="#" class="hover:text-accent transition">حساب کاربری</a>
+          <a href="#" class="hover:text-accent transition">پیگیری سفارش</a>
+          <a href="#" class="hover:text-accent transition">پشتیبانی</a>
         </div>
       </div>
     </div>
@@ -103,22 +130,25 @@
     <header class="bg-white shadow-sm sticky top-0 z-40">
       <div class="container mx-auto px-4 py-4">
         <div class="flex flex-col md:flex-row items-center justify-between">
-          <!-- لوگو و منو -->
-          <div
-            class="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0"
-          >
+          <!-- لوگو و منوی موبایل -->
+          <div class="flex items-center justify-between w-full md:w-auto">
             <a
               href="index.html"
               class="text-2xl font-bold text-primary hover:opacity-80 transition"
             >
               AmirShop
             </a>
-            <button class="md:hidden" id="menuToggle">
-              <i data-feather="menu" class="w-6 h-6"></i>
+
+            <!-- دکمه منوی همبرگری برای موبایل -->
+            <button
+              class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition"
+              id="mobileMenuToggle"
+            >
+              <i data-feather="menu" class="w-6 h-6 text-gray-700"></i>
             </button>
           </div>
 
-          <!-- منوی ناوبری -->
+          <!-- منوی ناوبری اصلی -->
           <nav class="hidden md:flex space-x-8 space-x-reverse" id="mainNav">
             <a
               href="index.html"
@@ -137,7 +167,7 @@
             >
             <a
               href="about.html"
-              class="font-medium text-primary hover:text-orange-600 transition border-b-2 border-primary"
+              class="font-medium text-primary border-b-2 border-primary transition"
               >درباره ما</a
             >
             <a
@@ -148,9 +178,11 @@
           </nav>
 
           <!-- ابزارهای کاربر -->
-          <div class="flex items-center space-x-4 space-x-reverse mt-4 md:mt-0">
+          <div
+            class="hidden md:flex items-center space-x-4 space-x-reverse mt-4 md:mt-0"
+          >
             <!-- جستجو -->
-            <div class="relative hidden md:block">
+            <div class="relative">
               <input
                 type="text"
                 placeholder="جستجوی محصولات..."
@@ -162,7 +194,6 @@
               ></i>
             </div>
 
-            <!-- سبد خرید و کاربر -->
             <div class="flex items-center space-x-3 space-x-reverse">
               <a href="cart.html" class="relative">
                 <i
@@ -174,12 +205,62 @@
                   >۳</span
                 >
               </a>
-              <a href="login.html" class="hidden md:block">
+              <a href="login.html">
                 <i
                   data-feather="user"
                   class="w-6 h-6 text-gray-700 hover:text-primary transition"
                 ></i>
               </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- منوی موبایل -->
+        <div
+          class="md:hidden hidden mt-4 pt-4 border-t border-gray-200"
+          id="mobileMenu"
+        >
+          <div class="flex flex-col space-y-4">
+            <a
+              href="index.html"
+              class="font-medium text-gray-700 hover:text-primary transition py-2"
+              >خانه</a
+            >
+            <a
+              href="products.html"
+              class="font-medium text-gray-700 hover:text-primary transition py-2"
+              >محصولات</a
+            >
+            <a
+              href="blog.html"
+              class="font-medium text-gray-700 hover:text-primary transition py-2"
+              >مقالات</a
+            >
+            <a
+              href="about.html"
+              class="font-medium text-primary transition py-2"
+              >درباره ما</a
+            >
+            <a
+              href="contact.html"
+              class="font-medium text-gray-700 hover:text-primary transition py-2"
+              >تماس با ما</a
+            >
+
+            <!-- اطلاعات تماس در منوی موبایل -->
+            <div class="pt-4 border-t border-gray-200">
+              <div
+                class="flex items-center space-x-2 space-x-reverse text-sm text-gray-600 mb-2"
+              >
+                <i data-feather="phone" class="w-4 h-4"></i>
+                <span>۰۲۱-۱۲۳۴۵۶۷۸</span>
+              </div>
+              <div
+                class="flex items-center space-x-2 space-x-reverse text-sm text-gray-600"
+              >
+                <i data-feather="mail" class="w-4 h-4"></i>
+                <span>info@amirshop.ir</span>
+              </div>
             </div>
           </div>
         </div>
@@ -192,7 +273,8 @@
         <div class="text-center max-w-4xl mx-auto">
           <h1 class="text-4xl md:text-5xl font-bold mb-6">درباره AmirShop</h1>
           <p class="text-xl md:text-2xl opacity-90 leading-relaxed">
-            بیش از یک دهه تجربه در ارائه بهترین مکمل‌های ورزشی با تضمین اصالت و کیفیت
+            بیش از یک دهه تجربه در ارائه بهترین مکمل‌های ورزشی با تضمین اصالت و
+            کیفیت
           </p>
         </div>
       </div>
@@ -203,21 +285,27 @@
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">داستان ما</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+              داستان ما
+            </h2>
             <div class="space-y-4 text-gray-600 leading-relaxed">
               <p>
-                AmirShop در سال ۱۳۹۲ با یک ماموریت ساده اما قدرتمند آغاز به کار کرد: 
-                <span class="text-primary font-bold">ارائه مکمل‌های ورزشی اصل با بهترین قیمت</span> 
+                AmirShop در سال ۱۳۹۲ با یک ماموریت ساده اما قدرتمند آغاز به کار
+                کرد:
+                <span class="text-primary font-bold"
+                  >ارائه مکمل‌های ورزشی اصل با بهترین قیمت</span
+                >
                 به ورزشکاران و علاقه‌مندان به تناسب اندام در ایران.
               </p>
               <p>
-                ما از یک فروشگاه کوچک محلی شروع کردیم و امروز به یکی از معتبرترین 
-                فروشگاه‌های آنلاین مکمل‌های ورزشی در کشور تبدیل شده‌ایم.
+                ما از یک فروشگاه کوچک محلی شروع کردیم و امروز به یکی از
+                معتبرترین فروشگاه‌های آنلاین مکمل‌های ورزشی در کشور تبدیل
+                شده‌ایم.
               </p>
               <p>
-                اعتقاد داریم که هر ورزشکار سزاوار دسترسی به محصولات باکیفیت و 
-                مشاوره تخصصی است. به همین دلیل، تیمی از متخصصین تغذیه ورزشی 
-                را گرد هم آورده‌ایم تا بهترین راهنمایی را در اختیار شما قرار دهند.
+                اعتقاد داریم که هر ورزشکار سزاوار دسترسی به محصولات باکیفیت و
+                مشاوره تخصصی است. به همین دلیل، تیمی از متخصصین تغذیه ورزشی را
+                گرد هم آورده‌ایم تا بهترین راهنمایی را در اختیار شما قرار دهند.
               </p>
             </div>
 
@@ -242,20 +330,26 @@
           </div>
 
           <div class="relative">
-            <div class="bg-gradient-to-br from-primary to-orange-400 rounded-3xl p-2">
+            <div
+              class="bg-gradient-to-br from-primary to-secondary rounded-3xl p-2"
+            >
               <img
                 src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop"
                 alt="فروشگاه AmirShop"
                 class="rounded-2xl w-full h-auto"
               />
             </div>
-            <div class="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-lg">
+            <div
+              class="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-lg border border-gray-100"
+            >
               <div class="flex items-center">
                 <div class="bg-primary rounded-xl p-3 ml-4">
                   <i data-feather="award" class="w-8 h-8 text-white"></i>
                 </div>
                 <div>
-                  <div class="text-2xl font-bold text-gray-800">برترین فروشگاه</div>
+                  <div class="text-2xl font-bold text-gray-800">
+                    برترین فروشگاه
+                  </div>
                   <div class="text-gray-600">مکمل ورزشی ۱۴۰۲</div>
                 </div>
               </div>
@@ -269,43 +363,51 @@
     <section class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
         <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">ماموریت و ارزش‌های ما</h2>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+            ماموریت و ارزش‌های ما
+          </h2>
           <p class="text-xl text-gray-600 max-w-2xl mx-auto">
             آنچه ما را از دیگران متمایز می‌کند
           </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="bg-white rounded-2xl p-8 mission-item border border-gray-100">
-            <div class="bg-gradient-to-br from-primary to-orange-400 rounded-2xl w-16 h-16 flex items-center justify-center mb-6">
+          <div class="mission-item bg-white rounded-2xl p-8">
+            <div
+              class="bg-gradient-to-br from-primary to-secondary rounded-2xl w-16 h-16 flex items-center justify-center mb-6"
+            >
               <i data-feather="shield" class="text-white w-8 h-8"></i>
             </div>
             <h3 class="text-2xl font-bold text-gray-800 mb-4">تضمین اصالت</h3>
             <p class="text-gray-600 leading-relaxed">
-              تمام محصولات ما مستقیماً از نمایندگان رسمی برندها تهیه شده و 
-              دارای گارانتی اصالت کالا هستند.
+              تمام محصولات ما مستقیماً از نمایندگان رسمی برندها تهیه شده و دارای
+              گارانتی اصالت کالا هستند.
             </p>
           </div>
 
-          <div class="bg-white rounded-2xl p-8 mission-item border border-gray-100">
-            <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl w-16 h-16 flex items-center justify-center mb-6">
+          <div class="mission-item bg-white rounded-2xl p-8">
+            <div
+              class="bg-gradient-to-br from-primary to-secondary rounded-2xl w-16 h-16 flex items-center justify-center mb-6"
+            >
               <i data-feather="users" class="text-white w-8 h-8"></i>
             </div>
             <h3 class="text-2xl font-bold text-gray-800 mb-4">مشاوره تخصصی</h3>
             <p class="text-gray-600 leading-relaxed">
-              تیم متخصصین ما آماده ارائه راهنمایی‌های شخصی‌شده برای رسیدن 
-              به اهداف تناسب اندام شما هستند.
+              تیم متخصصین ما آماده ارائه راهنمایی‌های شخصی‌شده برای رسیدن به
+              اهداف تناسب اندام شما هستند.
             </p>
           </div>
 
-          <div class="bg-white rounded-2xl p-8 mission-item border border-gray-100">
-            <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl w-16 h-16 flex items-center justify-center mb-6">
+          <div class="mission-item bg-white rounded-2xl p-8">
+            <div
+              class="bg-gradient-to-br from-primary to-secondary rounded-2xl w-16 h-16 flex items-center justify-center mb-6"
+            >
               <i data-feather="thumbs-up" class="text-white w-8 h-8"></i>
             </div>
             <h3 class="text-2xl font-bold text-gray-800 mb-4">پشتیبانی عالی</h3>
             <p class="text-gray-600 leading-relaxed">
-              پشتیبانی ۲۴/۷ و خدمات پس از فروش حرفه‌ای، تجربه خریدی بی‌نظیر 
-              را برای شما تضمین می‌کند.
+              پشتیبانی ۲۴/۷ و خدمات پس از فروش حرفه‌ای، تجربه خریدی بی‌نظیر را
+              برای شما تضمین می‌کند.
             </p>
           </div>
         </div>
@@ -316,7 +418,9 @@
     <section class="py-16 bg-white">
       <div class="container mx-auto px-4">
         <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">مسیر رشد ما</h2>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+            مسیر رشد ما
+          </h2>
           <p class="text-xl text-gray-600 max-w-2xl mx-auto">
             از یک فروشگاه کوچک تا برند پیشرو در صنعت مکمل‌های ورزشی
           </p>
@@ -328,56 +432,100 @@
             <div class="space-y-12 pr-8">
               <!-- 1392 -->
               <div class="relative timeline-item">
-                <div class="bg-primary text-white rounded-full w-6 h-6 absolute -right-8 top-2 z-10"></div>
-                <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-                  <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                    <h3 class="text-2xl font-bold text-gray-800">تاسیس AmirShop</h3>
-                    <span class="text-primary font-bold text-lg mt-2 md:mt-0">۱۳۹۲</span>
+                <div
+                  class="bg-primary text-white rounded-full w-6 h-6 absolute -right-8 top-2 z-10"
+                ></div>
+                <div
+                  class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100"
+                >
+                  <div
+                    class="flex flex-col md:flex-row md:items-center md:justify-between mb-4"
+                  >
+                    <h3 class="text-2xl font-bold text-gray-800">
+                      تاسیس AmirShop
+                    </h3>
+                    <span class="text-primary font-bold text-lg mt-2 md:mt-0"
+                      >۱۳۹۲</span
+                    >
                   </div>
                   <p class="text-gray-600 leading-relaxed">
-                    آغاز فعالیت با یک فروشگاه فیزیکی کوچک در تهران و تمرکز بر ارائه محصولات باکیفیت
+                    آغاز فعالیت با یک فروشگاه فیزیکی کوچک در تهران و تمرکز بر
+                    ارائه محصولات باکیفیت
                   </p>
                 </div>
               </div>
 
               <!-- 1395 -->
               <div class="relative timeline-item">
-                <div class="bg-primary text-white rounded-full w-6 h-6 absolute -right-8 top-2 z-10"></div>
-                <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-                  <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                    <h3 class="text-2xl font-bold text-gray-800">راه‌اندازی فروشگاه آنلاین</h3>
-                    <span class="text-primary font-bold text-lg mt-2 md:mt-0">۱۳۹۵</span>
+                <div
+                  class="bg-primary text-white rounded-full w-6 h-6 absolute -right-8 top-2 z-10"
+                ></div>
+                <div
+                  class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100"
+                >
+                  <div
+                    class="flex flex-col md:flex-row md:items-center md:justify-between mb-4"
+                  >
+                    <h3 class="text-2xl font-bold text-gray-800">
+                      راه‌اندازی فروشگاه آنلاین
+                    </h3>
+                    <span class="text-primary font-bold text-lg mt-2 md:mt-0"
+                      >۱۳۹۵</span
+                    >
                   </div>
                   <p class="text-gray-600 leading-relaxed">
-                    گسترش خدمات به سراسر کشور از طریق راه‌اندازی وبسایت و ارائه خدمات آنلاین
+                    گسترش خدمات به سراسر کشور از طریق راه‌اندازی وبسایت و ارائه
+                    خدمات آنلاین
                   </p>
                 </div>
               </div>
 
               <!-- 1398 -->
               <div class="relative timeline-item">
-                <div class="bg-primary text-white rounded-full w-6 h-6 absolute -right-8 top-2 z-10"></div>
-                <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-                  <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                    <h3 class="text-2xl font-bold text-gray-800">همکاری با برندهای بین‌المللی</h3>
-                    <span class="text-primary font-bold text-lg mt-2 md:mt-0">۱۳۹۸</span>
+                <div
+                  class="bg-primary text-white rounded-full w-6 h-6 absolute -right-8 top-2 z-10"
+                ></div>
+                <div
+                  class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100"
+                >
+                  <div
+                    class="flex flex-col md:flex-row md:items-center md:justify-between mb-4"
+                  >
+                    <h3 class="text-2xl font-bold text-gray-800">
+                      همکاری با برندهای بین‌المللی
+                    </h3>
+                    <span class="text-primary font-bold text-lg mt-2 md:mt-0"
+                      >۱۳۹۸</span
+                    >
                   </div>
                   <p class="text-gray-600 leading-relaxed">
-                    عقد قرارداد با برندهای معتبر جهانی و تبدیل شدن به نماینده رسمی چندین برند مطرح
+                    عقد قرارداد با برندهای معتبر جهانی و تبدیل شدن به نماینده
+                    رسمی چندین برند مطرح
                   </p>
                 </div>
               </div>
 
               <!-- 1402 -->
               <div class="relative">
-                <div class="bg-primary text-white rounded-full w-6 h-6 absolute -right-8 top-2 z-10"></div>
-                <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-                  <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                    <h3 class="text-2xl font-bold text-gray-800">دریافت جایزه برترین فروشگاه</h3>
-                    <span class="text-primary font-bold text-lg mt-2 md:mt-0">۱۴۰۲</span>
+                <div
+                  class="bg-primary text-white rounded-full w-6 h-6 absolute -right-8 top-2 z-10"
+                ></div>
+                <div
+                  class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100"
+                >
+                  <div
+                    class="flex flex-col md:flex-row md:items-center md:justify-between mb-4"
+                  >
+                    <h3 class="text-2xl font-bold text-gray-800">
+                      دریافت جایزه برترین فروشگاه
+                    </h3>
+                    <span class="text-primary font-bold text-lg mt-2 md:mt-0"
+                      >۱۴۰۲</span
+                    >
                   </div>
                   <p class="text-gray-600 leading-relaxed">
-                    انتخاب به عنوان برترین فروشگاه مکمل‌های ورزشی در نظرسنجی ملی مصرف‌کنندگان
+                    انتخاب به عنوان برترین فروشگاه مکمل‌های ورزشی در نظرسنجی ملی
+                    مصرف‌کنندگان
                   </p>
                 </div>
               </div>
@@ -391,7 +539,9 @@
     <section class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
         <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">تیم متخصصان ما</h2>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+            تیم متخصصان ما
+          </h2>
           <p class="text-xl text-gray-600 max-w-2xl mx-auto">
             با تیمی از متخصصان مجرب در خدمت شما هستیم
           </p>
@@ -399,8 +549,10 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <!-- عضو تیم ۱ -->
-          <div class="bg-white rounded-2xl overflow-hidden team-card border border-gray-100">
-            <div class="h-48 bg-gradient-to-br from-primary to-orange-400 relative overflow-hidden">
+          <div class="team-card bg-white rounded-2xl overflow-hidden">
+            <div
+              class="h-48 bg-gradient-to-br from-primary to-secondary relative overflow-hidden"
+            >
               <img
                 src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=300&fit=crop"
                 alt="امیر حسینی"
@@ -417,8 +569,10 @@
           </div>
 
           <!-- عضو تیم ۲ -->
-          <div class="bg-white rounded-2xl overflow-hidden team-card border border-gray-100">
-            <div class="h-48 bg-gradient-to-br from-blue-500 to-blue-600 relative overflow-hidden">
+          <div class="team-card bg-white rounded-2xl overflow-hidden">
+            <div
+              class="h-48 bg-gradient-to-br from-primary to-secondary relative overflow-hidden"
+            >
               <img
                 src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop"
                 alt="محمد رضایی"
@@ -435,8 +589,10 @@
           </div>
 
           <!-- عضو تیم ۳ -->
-          <div class="bg-white rounded-2xl overflow-hidden team-card border border-gray-100">
-            <div class="h-48 bg-gradient-to-br from-green-500 to-green-600 relative overflow-hidden">
+          <div class="team-card bg-white rounded-2xl overflow-hidden">
+            <div
+              class="h-48 bg-gradient-to-br from-primary to-secondary relative overflow-hidden"
+            >
               <img
                 src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=300&fit=crop"
                 alt="فاطمه محمدی"
@@ -453,8 +609,10 @@
           </div>
 
           <!-- عضو تیم ۴ -->
-          <div class="bg-white rounded-2xl overflow-hidden team-card border border-gray-100">
-            <div class="h-48 bg-gradient-to-br from-purple-500 to-purple-600 relative overflow-hidden">
+          <div class="team-card bg-white rounded-2xl overflow-hidden">
+            <div
+              class="h-48 bg-gradient-to-br from-primary to-secondary relative overflow-hidden"
+            >
               <img
                 src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=400&h=300&fit=crop"
                 alt="علی کریمی"
@@ -477,14 +635,16 @@
     <section class="py-16 bg-primary">
       <div class="container mx-auto px-4">
         <div class="text-center text-white max-w-3xl mx-auto">
-          <h2 class="text-3xl md:text-4xl font-bold mb-6">به خانواده بزرگ AmirShop بپیوندید</h2>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">
+            به خانواده بزرگ AmirShop بپیوندید
+          </h2>
           <p class="text-xl opacity-90 mb-8 leading-relaxed">
             همین امروز سفر خود به سوی تناسب اندام و سلامتی را آغاز کنید
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="products.html"
-              class="bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition shadow-lg text-center"
+              class="btn-accent px-8 py-4 rounded-xl font-bold text-lg transition shadow-lg text-center"
             >
               🛒 مشاهده محصولات
             </a>
@@ -654,25 +814,25 @@
 
     <!-- اسکریپت‌ها -->
     <script>
-      // مقداردهی اولیه Feather Icons
+      // مقداردهی feather icons
       feather.replace();
 
-      // منوی موبایل
-      document
-        .getElementById("menuToggle")
-        ?.addEventListener("click", function () {
-          const nav = document.getElementById("mainNav");
-          nav.classList.toggle("hidden");
-          nav.classList.toggle("flex");
-          nav.classList.toggle("flex-col");
-          nav.classList.toggle("absolute");
-          nav.classList.toggle("bg-white");
-          nav.classList.toggle("w-full");
-          nav.classList.toggle("top-20");
-          nav.classList.toggle("left-0");
-          nav.classList.toggle("p-4");
-          nav.classList.toggle("shadow-lg");
+      // مدیریت منوی موبایل
+      const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener("click", function () {
+          mobileMenu.classList.toggle("hidden");
+          // تغییر آیکون منو
+          const icon = mobileMenuToggle.querySelector("i");
+          if (mobileMenu.classList.contains("hidden")) {
+            feather.icons.menu.replaceFeather(icon);
+          } else {
+            feather.icons.x.replaceFeather(icon);
+          }
         });
+      }
     </script>
-</body>
+  </body>
 </html>
